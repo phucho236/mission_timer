@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mission_timer/screen/splat/splat_controller.dart';
+
 class SplatScreen extends StatefulWidget {
   static const String router =  "/SplatScreen";
   @override

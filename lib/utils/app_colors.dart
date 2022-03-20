@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class ColorsApp {
@@ -6,9 +5,12 @@ class ColorsApp {
   factory ColorsApp() => shared;
   const ColorsApp._();
 
-  static const scaffoldColor = Color(0xfff9f9f9);
+  static const mainColor = Color(0xfff9f9f9);
 
   static const backgroundTextField = Color(0xffEDEFF2);
+
+ static const blue= Color(0xff0066b3);
+  static const colorButton = Color(0xff0066b3);
   static const blackText = Color(0xff3A3E52);
   static const white = Colors.white;
   static const red = Color(0xffF47B7B);

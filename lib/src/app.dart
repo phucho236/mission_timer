@@ -1,11 +1,12 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:mission_timer/config/app_config.dart';
 import 'package:mission_timer/config/app_page/app_page.dart';
+import 'package:mission_timer/config/language/translation.dart';
 import 'package:mission_timer/config/theme/theme_data.dart';
+import 'package:mission_timer/screen/splat/splat_screen.dart';
 import 'package:mission_timer/src/bindings/initial_bindings.dart';
-import 'package:mission_timer/screen/splat_screen/splat_screen.dart';
-
 
 final RouteObserver<PageRoute> routeObserver = RouteObserver<PageRoute>();
 
@@ -15,7 +16,8 @@ class App extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);
-        if (!currentFocus.hasPrimaryFocus && currentFocus.focusedChild != null) {
+        if (!currentFocus.hasPrimaryFocus &&
+            currentFocus.focusedChild != null) {
           FocusManager.instance.primaryFocus?.unfocus();
         }
       },
@@ -25,26 +27,20 @@ class App extends StatelessWidget {
         navigatorObservers: [routeObserver],
         theme: appThemeData(context),
         builder: (context, widget) {
-          try {
-            return MediaQuery(data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0), child: widget);
-          } catch (e) {
-            return widget;
-          }
+          return widget!;
         },
-      
-        locale: Locale('vi', 'VI'),
-        fallbackLocale: Locale('vi', 'VI'),
+        translations: Internationalization(),
+        locale: const Locale('vi', 'VI'),
+        supportedLocales: const [Locale('vi', 'VI')],
         localizationsDelegates: [
-          
-        ],
-        supportedLocales: [
-          const Locale('en', ''), // English, no country code
-          const Locale('es', ''), // Spanish, no country code
-          const Locale('ja', 'JP')
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          DefaultCupertinoLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate
         ],
         getPages: AppPages.pages,
         initialBinding: InitialBinding(),
-        initialRoute:  SplatScreen.router,
+        initialRoute: SplatScreen.router,
         debugShowCheckedModeBanner: false,
         defaultTransition: Transition.rightToLeft,
       ),

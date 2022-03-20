@@ -1,45 +1,47 @@
 import 'package:flutter/material.dart';
 import 'package:mission_timer/utils/app_colors.dart';
 
-
-
-
 TextTheme _getTextTheme(ThemeData theme) {
   final textTheme = theme.textTheme
       .copyWith(
-        bodyText1: TextStyle(fontSize: 14, color: ColorsApp.blackText, height: 22 / 14),
-        bodyText2: TextStyle(fontSize: 12, color: ColorsApp.blackText, height: 19 / 12),
-        caption: TextStyle(fontSize: 12, color: ColorsApp.gray, height: 19 / 12),
-        button: TextStyle(fontSize: 18, color: ColorsApp.white, height: 29 / 18),
-        subtitle1:
-            TextStyle(fontSize: 16, color: ColorsApp.blackText,  height: 26 / 16),
-        subtitle2:
-            TextStyle(fontSize: 14, color: ColorsApp.blackText,height: 22 / 14),
-        headline6:
-            TextStyle(fontSize: 22, color: ColorsApp.blackText,  height: 35 / 22),
+        bodyText1: TextStyle(fontSize: 14, color: ColorsApp.blackText),
+        bodyText2: TextStyle(
+            fontSize: 12, color: ColorsApp.blackText, height: 19 / 12),
+        caption:
+            TextStyle(fontSize: 12, color: ColorsApp.gray, height: 19 / 12),
+        button:
+            TextStyle(fontSize: 18, color: ColorsApp.white, height: 29 / 18),
+        subtitle1: TextStyle(
+            fontSize: 16, color: ColorsApp.blackText, height: 26 / 16),
+        subtitle2: TextStyle(
+            fontSize: 14, color: ColorsApp.blackText, height: 22 / 14),
+        headline6: TextStyle(fontSize: 22, color: ColorsApp.blue),
       )
       .apply(
           // bodyColor: const Color(0xFF687084),
           // displayColor:  const Color(0xFF687084),
           );
+  ;
+
   return textTheme;
 }
 
 ThemeData appThemeData(BuildContext context) => ThemeData(
-      primaryColor: Colors.blueAccent,
-      textTheme: _getTextTheme(Theme.of(context)),
-      scaffoldBackgroundColor: ColorsApp.scaffoldColor,
+      primaryColor: Color(0xff0066b3),
       colorScheme: ColorScheme(
-        primary: const Color(0xFF9099B2),
-        secondary: const Color(0xffF47B7B),
-        background: const Color(0xffF9F9F9),
-        error: const Color(0xffd32f2f),
-        onSecondary: const Color(0xffffffff),
-        onBackground: const Color(0xffffffff),
+        primary: Color(0xff0066b3),
+        primaryVariant: Color(0xffF5F8FA),
+        secondary: Color(0xff95A8B5),
+        secondaryVariant: Color(0xffF2F5F5),
         brightness: Brightness.light,
-        surface: const Color(0xffffffff),
-        onSurface: Colors.black,
-        onPrimary: Colors.white,
+        error: Colors.red,
+        onBackground: Color(0xffDFE4E7),
         onError: Colors.white,
+        onPrimary: Color(0xFF565656),
+        onSecondary: Colors.white,
+        onSurface: Color(0xffC0C8CD),
+        surface: Color(0xffE5E5E5),
+        background: Color(0xFF828282),
       ),
+      textTheme: _getTextTheme(Theme.of(context)),
     );
