@@ -1,0 +1,3 @@
+//Using  hive
+
+class HiveStorage {}

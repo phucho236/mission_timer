@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
-import 'package:mission_timer/config/app_config.dart';
-import 'package:mission_timer/config/app_page/app_page.dart';
-import 'package:mission_timer/config/language/translation.dart';
-import 'package:mission_timer/config/theme/theme_data.dart';
-import 'package:mission_timer/screen/splat/splat_screen.dart';
-import 'package:mission_timer/src/bindings/initial_bindings.dart';
+import 'package:mission_timer/core/app_page/app_page.dart';
+import 'package:mission_timer/core/bindings/initial_bindings.dart';
+import 'package:mission_timer/core/config/app_config.dart';
+import 'package:mission_timer/core/config/language/translation.dart';
+import 'package:mission_timer/core/config/theme/theme_data.dart';
+import 'package:mission_timer/src/screen/splat/splat_screen.dart';
 
 final RouteObserver<PageRoute> routeObserver = RouteObserver<PageRoute>();
 
