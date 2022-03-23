@@ -6,7 +6,6 @@ import 'package:mission_timer/src/widget/base_layout/base_layout.dart';
 import 'package:mission_timer/src/widget/button_custom.dart';
 import 'package:mission_timer/src/widget/text_field_custom.dart';
 
-
 class InputEmailScreen extends StatefulWidget {
   static const String router = "/InputMailScreen";
   @override
@@ -29,36 +28,26 @@ class _InputEmailScreenState extends State<InputEmailScreen>
                 key: ct.formKeyInputEmailController,
                 child: Column(
                   children: [
-                    Expanded(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          TextFieldCustom(
-                            textEditingController: ct.emailEditingController,
-                            validate: (value) =>
-                                ct.validate.validateEmail(value),
-                            hint: 'email'.tr,
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        TextFieldCustom(
+                          textEditingController: ct.emailEditingController,
+                          validate: (value) => ct.validate.validateEmail(value),
+                          hint: 'email'.tr,
+                        ),
+                        SizedBox(height: 30),
+                        Container(
+                          width: 250,
+                          child: ButtonCustom(
+                            content: 'submit'.tr,
+                            onPressed: () {
+                              ct.submit();
+                            },
                           ),
-                          Spacer()
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                    Expanded(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Container(
-                            width: 250,
-                            child: ButtonCustom(
-                              content: 'submit'.tr,
-                              onPressed: () {
-                                ct.submit();
-                              },
-                            ),
-                          ),
-                        ],
-                      ),
-                    )
                   ],
                 ),
               ),

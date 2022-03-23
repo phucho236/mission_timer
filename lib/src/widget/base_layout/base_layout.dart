@@ -17,41 +17,43 @@ class BaseLayout extends StatelessWidget with ThemeDataMixin {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Opacity(
-              opacity: turnOnBack! ? 1 : 0,
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: IconButton(
-                  onPressed: () {
-                    Get.back();
-                  },
-                  icon: Icon(
-                    Icons.arrow_back_ios_new,
-                    color: colorScheme.primary,
+        body: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Opacity(
+                opacity: turnOnBack! ? 1 : 0,
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: IconButton(
+                    onPressed: () {
+                      Get.back();
+                    },
+                    icon: Icon(
+                      Icons.arrow_back_ios_new,
+                      color: colorScheme.primary,
+                    ),
                   ),
                 ),
               ),
-            ),
 
-            SizedBox(
-              height: 150,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 15),
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  titleForm!.toUpperCase(),
-                  style: textTheme.headline6!,
+              SizedBox(
+                height: 150,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 15),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    titleForm!.toUpperCase(),
+                    style: textTheme.headline6!,
+                  ),
                 ),
               ),
-            ),
-            Expanded(child: child)
-            //child,
-          ],
+              SizedBox(child: child)
+              //child,
+            ],
+          ),
         ),
       ),
     );

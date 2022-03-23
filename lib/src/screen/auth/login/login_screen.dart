@@ -6,9 +6,6 @@ import 'package:mission_timer/src/widget/base_layout/base_layout.dart';
 import 'package:mission_timer/src/widget/button_custom.dart';
 import 'package:mission_timer/src/widget/text_field_custom.dart';
 
-
-
-
 class LoginScreen extends StatefulWidget {
   static const String router = "/LoginScreen";
   @override
@@ -27,56 +24,48 @@ class _LoginScreenState extends State<LoginScreen> with ThemeDataMixin {
             key: ct.formKeyLoginController,
             child: Column(
               children: [
-                Expanded(
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(30.0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            TextFieldCustom(
-                              textEditingController: ct.passController,
-                              validate: (value) => ct.validate
-                                  .validateTextNumber(value, 'id_teacher'.tr),
-                              hint: 'id_teacher'.tr,
+                Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(30.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          TextFieldCustom(
+                            textEditingController: ct.passController,
+                            validate: (value) => ct.validate
+                                .validateTextNumber(value, 'id_teacher'.tr),
+                            hint: 'id_teacher'.tr,
+                          ),
+                          TextFieldCustom(
+                            textEditingController: ct.idEditingController,
+                            validate: (value) => ct.validate
+                                .validateTextNumber(value, 'password'.tr),
+                            hint: 'password'.tr,
+                          ),
+                          SizedBox(height: 30),
+                          Container(
+                            width: 250,
+                            child: ButtonCustom(
+                              content: 'login'.tr,
+                              onPressed: () {
+                                ct.login();
+                              },
                             ),
-                            TextFieldCustom(
-                              textEditingController: ct.idEditingController,
-                              validate: (value) => ct.validate
-                                  .validateTextNumber(value, 'password'.tr),
-                              hint: 'password'.tr,
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              return ct.inputMail();
+                            },
+                            child: Text(
+                              'forgot_pass'.tr,
+                              style: textTheme.bodyText1,
                             ),
-                          ],
-                        ),
+                          )
+                        ],
                       ),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Container(
-                        width: 250,
-                        child: ButtonCustom(
-                          content: 'login'.tr,
-                          onPressed: () {
-                            ct.login();
-                          },
-                        ),
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          return ct.inputMail();
-                        },
-                        child: Text(
-                          'forgot_pass'.tr,
-                          style: textTheme.bodyText1,
-                        ),
-                      )
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ],
             ),

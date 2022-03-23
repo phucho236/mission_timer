@@ -24,7 +24,7 @@ class Validate {
     if (text == null || text.isEmpty) {
       return 'pl_input'.tr + " $nameField.";
     }
-    if (double.tryParse(text) != null) {
+    if (double.tryParse(text) == null) {
       return "$nameField " + 'is_number'.tr;
     }
     return null;

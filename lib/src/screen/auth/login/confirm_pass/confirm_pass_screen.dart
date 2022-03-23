@@ -6,8 +6,6 @@ import 'package:mission_timer/src/widget/base_layout/base_layout.dart';
 import 'package:mission_timer/src/widget/button_custom.dart';
 import 'package:mission_timer/src/widget/text_field_custom.dart';
 
-
-
 class ConfirmPassScreen extends StatefulWidget {
   static const String router = "/ConfirmPassScreen";
   @override
@@ -28,48 +26,32 @@ class _ConfirmPassScreenState extends State<ConfirmPassScreen>
             key: ct.formKeyConfirmPassController,
             child: Column(
               children: [
-                Expanded(
+                Padding(
+                  padding: const EdgeInsets.all(30.0),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.all(30.0),
-                        child: Column(
-                          children: [
-                            TextFieldCustom(
-                              textEditingController: ct.passEditingController,
-                              validate: (value) =>
-                                  ct.validate.validatePass(value),
-                              hint: 'password'.tr,
-                            ),
-                            TextFieldCustom(
-                              textEditingController:
-                                  ct.confirmPassEditingController,
-                              validate: (value) => ct.validate
-                                  .validateConfirmPass(
-                                      value, ct.passEditingController.text),
-                              hint: 'confirm_password'.tr,
-                            ),
-                          ],
-                        ),
+                      TextFieldCustom(
+                        textEditingController: ct.passEditingController,
+                        validate: (value) => ct.validate.validatePass(value),
+                        hint: 'password'.tr,
+                      ),
+                      TextFieldCustom(
+                        textEditingController: ct.confirmPassEditingController,
+                        validate: (value) => ct.validate.validateConfirmPass(
+                            value, ct.passEditingController.text),
+                        hint: 'confirm_password'.tr,
                       ),
                     ],
                   ),
                 ),
-                Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Container(
-                        width: 250,
-                        child: ButtonCustom(
-                          content: 'login'.tr,
-                          onPressed: () {
-                            ct.submit();
-                          },
-                        ),
-                      ),
-                    ],
+                SizedBox(height: 30),
+                Container(
+                  width: 250,
+                  child: ButtonCustom(
+                    content: 'login'.tr,
+                    onPressed: () {
+                      ct.submit();
+                    },
                   ),
                 ),
               ],

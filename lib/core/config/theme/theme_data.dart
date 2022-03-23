@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mission_timer/core/helper/utils/app_colors.dart';
 
-
 TextTheme _getTextTheme(ThemeData theme) {
   final textTheme = theme.textTheme
       .copyWith(
@@ -22,18 +21,21 @@ TextTheme _getTextTheme(ThemeData theme) {
           // bodyColor: const Color(0xFF687084),
           // displayColor:  const Color(0xFF687084),
           );
-  ;
 
   return textTheme;
 }
 
 ThemeData appThemeData(BuildContext context) => ThemeData(
       primaryColor: Color(0xff0066b3),
+      primaryIconTheme: IconThemeData(
+        color: Colors.white,
+      ),
+      appBarTheme: AppBarTheme(
+          foregroundColor: Colors.white //here you can give the text color
+          ),
       colorScheme: ColorScheme(
         primary: Color(0xff0066b3),
-        primaryVariant: Color(0xffF5F8FA),
         secondary: Color(0xff95A8B5),
-        secondaryVariant: Color(0xffF2F5F5),
         brightness: Brightness.light,
         error: Colors.red,
         onBackground: Color(0xffDFE4E7),
