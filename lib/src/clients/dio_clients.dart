@@ -3,8 +3,6 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
-
-import 'package:get/get.dart' as getx;
 import 'package:mission_timer/core/clients/network_client.dart';
 import 'package:mission_timer/core/config/app_config.dart';
 import 'package:mission_timer/core/helper/enum/enum.dart';
@@ -138,19 +136,11 @@ extension ResponseExtension on Response {
         return json;
       } else {
         String errorText = "";
-        if (this.data["errors"] != null) {
-          inspect(this.data);
-          Map<dynamic, dynamic> errors = this.data["errors"];
-          if (errors.values.isEmpty ||
-              errors.values.toList()[0] == null ||
-              (errors.values.toList()[0] as List).isEmpty) {
-            errorText = 'エラー！エラーが発生しました。しばらくしてからもう一度お試しください。';
-          }
-          errorText = errors.values.toList()[0][0];
-        } else if (this.data["message"] != null && this.data["message"] != "") {
+        if (this.data["message"] != null && this.data["message"] != "") {
           errorText = this.data["message"];
         } else {
-          errorText = 'エラー！エラーが発生しました。しばらくしてからもう一度お試しください。';
+          errorText =
+              'error! An error has occurred. Please try again after a while.';
         }
         throw errorText;
       }

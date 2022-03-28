@@ -32,15 +32,15 @@ class _LoginScreenState extends State<LoginScreen> with ThemeDataMixin {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           TextFieldCustom(
-                            textEditingController: ct.passController,
+                            textEditingController: ct.idEditingController,
                             validate: (value) => ct.validate
                                 .validateTextNumber(value, 'id_teacher'.tr),
                             hint: 'id_teacher'.tr,
                           ),
                           TextFieldCustom(
-                            textEditingController: ct.idEditingController,
-                            validate: (value) => ct.validate
-                                .validateTextNumber(value, 'password'.tr),
+                            textEditingController: ct.passController,
+                            validate: (value) =>
+                                ct.validate.validateText(value, 'password'.tr),
                             hint: 'password'.tr,
                           ),
                           SizedBox(height: 30),

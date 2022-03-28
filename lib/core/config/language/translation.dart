@@ -16,7 +16,15 @@ class Internationalization extends Translations {
           'succes': 'Thành công',
           'validate_pass': 'Mật khẩu có độ dài từ 5 đến 15 kí tự.',
           'pass_dơes_not_match': 'Mật khẩu không trùng khớp',
-          
+          'week': 'Tuần',
+          'month': 'Tháng',
+          'profile': 'Thông tin cá nhân',
+          'setting': 'Cài đặt',
+          'feedback': 'Phản hồi',
+          'logout': 'Đăng xuất',
+          'test_supervision': 'giám sát thi',
+          'chart': 'Biểu đồ',
+          'notification': 'Thông báo', 
         }
       };
 }

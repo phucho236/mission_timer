@@ -35,7 +35,7 @@ class Validate {
       return 'pl_input'.tr + 'password'.tr;
     }
 
-    if (passWord!.length < 5 || passWord.length > 15) {
+    if (passWord.length < 5 || passWord.length > 15) {
       return 'validate_pass'.tr;
     }
     return null;
