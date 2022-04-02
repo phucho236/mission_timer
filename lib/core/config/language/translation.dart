@@ -24,7 +24,20 @@ class Internationalization extends Translations {
           'logout': 'Đăng xuất',
           'test_supervision': 'giám sát thi',
           'chart': 'Biểu đồ',
-          'notification': 'Thông báo', 
+          'notification': 'Thông báo',
+          'attended': 'Đã tham gia',
+          'not_attended_yet': 'không tham gia',
+          'will_attend': 'Sẽ tham gia',
+          'unconfimred': 'Chưa xác nhận',
+          'school_year': 'Năm học',
+
+          'progress': 'Đang diễn ra',
+          'ended': 'Đã kết thúc',
+          'ready_report': 'Sẳn sàng báo cáo',
+
+          //err
+          //
+          'mask_err': 'Đã có lỗi xảy ra xin vui lòng thử lại'
         }
       };
 }

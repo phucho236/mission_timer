@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mission_timer/core/helper/utils/theme_data.dart';
 import 'package:mission_timer/src/screen/auth/login/login_controller.dart';
-import 'package:mission_timer/src/widget/base_layout/base_layout.dart';
+import 'package:mission_timer/src/widget/base_layout/base_layout_auth.dart';
 import 'package:mission_timer/src/widget/button_custom.dart';
 import 'package:mission_timer/src/widget/text_field_custom.dart';
 
@@ -15,7 +15,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> with ThemeDataMixin {
   @override
   Widget build(BuildContext context) {
-    return BaseLayout(
+    return BaseLayoutAuth(
       titleForm: 'login'.tr.toUpperCase(),
       child: GetBuilder<LoginController>(
         init: LoginController(),

@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
+import 'package:get/get_utils/get_utils.dart';
+
 import 'package:mission_timer/core/clients/network_client.dart';
 import 'package:mission_timer/core/config/app_config.dart';
 import 'package:mission_timer/core/helper/enum/enum.dart';
@@ -139,12 +141,12 @@ extension ResponseExtension on Response {
         if (this.data["message"] != null && this.data["message"] != "") {
           errorText = this.data["message"];
         } else {
-          errorText =
-              'error! An error has occurred. Please try again after a while.';
+          errorText = 'mark_err'.tr;
         }
         throw errorText;
       }
     }
+    return null;
   }
 }
 

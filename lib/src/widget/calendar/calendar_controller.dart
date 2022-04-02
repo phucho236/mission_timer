@@ -13,7 +13,6 @@ class CalendarController extends GetxController {
   DateTime? rangeEnd;
   @override
   void onInit() {
-    // TODO: implement onInit
     super.onInit();
     selectedDay = focusedDay;
     selectedEvents = getEventsForDay(selectedDay!);
@@ -21,7 +20,6 @@ class CalendarController extends GetxController {
 
   @override
   void onClose() {
-    // TODO: implement onClose
     super.onClose();
   }
 

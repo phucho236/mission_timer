@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mission_timer/core/helper/validate/validate.dart';
-
-import 'package:mission_timer/src/screen/auth/login/confirm_pass/confirm_pass_screen.dart';
+import 'package:mission_timer/src/screen/auth/forgot_pass/confirm_pass/confirm_pass_screen.dart';
 
 class InputEmailController extends GetxController {
   final formKeyInputEmailController = GlobalKey<FormState>();

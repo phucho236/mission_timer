@@ -5,16 +5,11 @@ TextTheme _getTextTheme(ThemeData theme) {
   final textTheme = theme.textTheme
       .copyWith(
         bodyText1: TextStyle(fontSize: 14, color: ColorsApp.blackText),
-        bodyText2: TextStyle(
-            fontSize: 12, color: ColorsApp.blackText, height: 19 / 12),
-        caption:
-            TextStyle(fontSize: 12, color: ColorsApp.gray, height: 19 / 12),
-        button:
-            TextStyle(fontSize: 18, color: ColorsApp.white, height: 29 / 18),
-        subtitle1: TextStyle(
-            fontSize: 16, color: ColorsApp.blackText, height: 26 / 16),
-        subtitle2: TextStyle(
-            fontSize: 14, color: ColorsApp.blackText, height: 22 / 14),
+        bodyText2: TextStyle(fontSize: 12, color: ColorsApp.blackText),
+        caption: TextStyle(fontSize: 12, color: ColorsApp.gray),
+        button: TextStyle(fontSize: 18, color: ColorsApp.white),
+        subtitle1: TextStyle(fontSize: 16, color: ColorsApp.blackText),
+        subtitle2: TextStyle(fontSize: 14, color: ColorsApp.blackText),
         headline6: TextStyle(fontSize: 22, color: ColorsApp.blue),
       )
       .apply(
