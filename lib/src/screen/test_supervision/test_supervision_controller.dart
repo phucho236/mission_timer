@@ -59,7 +59,6 @@ class TestSupervisioController extends GetxController {
 
   @override
   void onInit() {
-    // TODO: implement onInit
     super.onInit();
     process.forEach((element) {
       var textEditingController = new TextEditingController(text: element.id);

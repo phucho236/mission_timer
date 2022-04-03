@@ -4,6 +4,7 @@ import 'package:mission_timer/core/helper/utils/theme_data.dart';
 import 'package:mission_timer/src/screen/auth/login/login_controller.dart';
 import 'package:mission_timer/src/widget/base_layout/base_layout_auth.dart';
 import 'package:mission_timer/src/widget/button_custom.dart';
+import 'package:mission_timer/src/widget/dropdow_language.dart';
 import 'package:mission_timer/src/widget/text_field_custom.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -61,7 +62,7 @@ class _LoginScreenState extends State<LoginScreen> with ThemeDataMixin {
                               'forgot_pass'.tr,
                               style: textTheme.bodyText1,
                             ),
-                          )
+                          ),
                         ],
                       ),
                     ),
@@ -71,6 +72,19 @@ class _LoginScreenState extends State<LoginScreen> with ThemeDataMixin {
             ),
           );
         },
+      ),
+      onChild: Positioned(
+        right: 10,
+        bottom: 10,
+        child: Row(
+          children: [
+            Icon(Icons.language_outlined),
+            SizedBox(
+              width: 10,
+            ),
+            DropDownLanguage(),
+          ],
+        ),
       ),
     );
   }

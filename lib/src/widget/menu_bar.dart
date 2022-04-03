@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:mission_timer/src/screen/chart/chart_screen.dart';
 import 'package:mission_timer/src/screen/notification/notification_screen.dart';
 import 'package:mission_timer/src/screen/test_supervision/test_supervision_screen.dart';
+import 'package:mission_timer/src/widget/dropdow_language.dart';
 
 class MenuBar extends StatelessWidget {
   @override
@@ -57,6 +58,17 @@ class MenuBar extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.exit_to_app),
             title: Text('logout'.tr),
+            onTap: () => {Navigator.of(context).pop()},
+          ),
+          ListTile(
+            leading: Icon(Icons.language_outlined),
+            title: Row(
+              children: [
+                Text('language'.tr),
+                Spacer(),
+                DropDownLanguage(),
+              ],
+            ),
             onTap: () => {Navigator.of(context).pop()},
           ),
         ],

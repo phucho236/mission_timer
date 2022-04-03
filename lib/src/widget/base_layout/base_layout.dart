@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:mission_timer/core/helper/utils/theme_data.dart';
 
 class BaseLayout extends StatelessWidget with ThemeDataMixin {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mission_timer/core/config/language/localization_service.dart';
 import 'package:mission_timer/core/helper/toast/toast.dart';
 import 'package:mission_timer/core/helper/utils/util.dart';
 import 'package:mission_timer/src/widget/calendar/calendar_controller.dart';
@@ -28,7 +29,9 @@ class _CalendarState extends State<Calendar> {
                       CalendarFormat.week: '2 ' + 'week'.tr
                     },
                     headerStyle: HeaderStyle(),
-                    locale: 'vi_VI',
+                    locale: Get.locale != null
+                        ? Get.locale!.languageCode
+                        : LocalizationService.locale.languageCode,
                     firstDay: kFirstDay,
                     lastDay: kLastDay,
                     focusedDay: controller.focusedDay,

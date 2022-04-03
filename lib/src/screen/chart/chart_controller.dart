@@ -31,4 +31,6 @@ class ChartController extends GetxController {
   }
 
   
+
+  
 }

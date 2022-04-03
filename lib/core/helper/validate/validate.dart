@@ -43,7 +43,7 @@ class Validate {
 
   String? validateConfirmPass(String? passWord, String? confirmPass) {
     if (passWord != confirmPass) {
-      return 'pass_dơes_not_match'.tr;
+      return 'pass_does_not_match'.tr;
     }
     return null;
   }

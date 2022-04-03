@@ -12,7 +12,7 @@ class ConfirmPassController extends GetxController {
   final Validate validate = Validate();
   void submit() {
     if (formKeyConfirmPassController.currentState!.validate()) {
-      Toast().showToat('succes'.tr);
+      Toast().showToat('success'.tr);
       Get.offAndToNamed(LoginScreen.router);
     }
   }

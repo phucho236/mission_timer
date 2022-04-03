@@ -60,7 +60,7 @@ class ButtonCustom extends StatelessWidget with ThemeDataMixin {
                 style: textStyle ??
                     textTheme.button!
                         .copyWith(color: textColor ?? ColorsApp.white))),
-        disabledColor: disableColor ?? colorScheme.secondaryVariant,
+        disabledColor: disableColor ?? colorScheme.surfaceVariant,
         onPressed: onPressed);
   }
 }
