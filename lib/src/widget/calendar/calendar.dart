@@ -29,9 +29,7 @@ class _CalendarState extends State<Calendar> {
                       CalendarFormat.week: '2 ' + 'week'.tr
                     },
                     headerStyle: HeaderStyle(),
-                    locale: Get.locale != null
-                        ? Get.locale!.languageCode
-                        : LocalizationService.locale.languageCode,
+                    locale: Get.locale!.languageCode,
                     firstDay: kFirstDay,
                     lastDay: kLastDay,
                     focusedDay: controller.focusedDay,

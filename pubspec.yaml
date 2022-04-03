@@ -38,7 +38,7 @@ dependencies:
 
   flutter_spinkit: ^5.0.0
 
-  hive: ^2.0.6
+  shared_preferences: ^2.0.13
 
   dio: ^4.0.4
 

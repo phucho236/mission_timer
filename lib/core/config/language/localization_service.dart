@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mission_timer/core/helper/strorage/strorage.dart';
 import 'dart:collection';
 import 'st_en_us.dart';
 import 'st_vi_vn.dart';
@@ -30,9 +31,11 @@ class LocalizationService extends Translations {
   });
 
 // function change language nếu bạn không muốn phụ thuộc vào ngôn ngữ hệ thống
-  static void changeLocale(String langCode) {
+  static void changeLocale(String langCode) async {
     final locale = _getLocaleFromLanguage(langCode: langCode);
+
     Get.updateLocale(locale);
+    Get.find<Strorage>().saveLanguageCode(langCode);
   }
 
   @override
@@ -42,7 +45,8 @@ class LocalizationService extends Translations {
       };
 
   static Locale _getLocaleFromLanguage({String? langCode}) {
-    var lang = langCode ?? Get.deviceLocale?.languageCode;
+    var lang =
+        langCode ?? Get.locale?.languageCode ?? Get.deviceLocale?.languageCode;
     for (int i = 0; i < langCodes.length; i++) {
       if (lang == langCodes[i]) return locales[i];
     }

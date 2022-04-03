@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mission_timer/core/config/language/localization_service.dart';
-import 'package:mission_timer/src/widget/calendar/calendar_controller.dart';
+import 'package:mission_timer/core/helper/strorage/strorage.dart';
 
 class DropDownLanguage extends StatelessWidget {
   const DropDownLanguage({Key? key}) : super(key: key);
@@ -38,7 +38,14 @@ class DropDownLanguage extends StatelessWidget {
 }
 
 class DropDownLanguageController extends GetxController {
-  String selectedLang = LocalizationService.locale.languageCode;
+  late String selectedLang =
+      Get.find<Strorage>().getLanguageCode ?? Get.locale!.languageCode;
+
+  @override
+  void onInit() {
+    super.onInit();
+  }
+
   void changeLanguage(String value) {
     selectedLang = value;
     LocalizationService.changeLocale(value);

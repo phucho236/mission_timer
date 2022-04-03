@@ -19,7 +19,7 @@ class _NotificationScreenState extends State<NotificationScreen>
   @override
   Widget build(BuildContext context) {
     return BaseLayout(
-      titleForm: 'notificaiton'.tr,
+      titleForm: 'notification'.tr,
       child: GetBuilder<NotificationController>(
         init: NotificationController(),
         builder: (controller) {
