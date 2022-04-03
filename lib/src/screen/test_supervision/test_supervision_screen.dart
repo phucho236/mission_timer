@@ -22,7 +22,7 @@ class _TestSupervisionScreenState extends State<TestSupervisionScreen>
   @override
   Widget build(BuildContext context) {
     return BaseLayout(
-      titleForm: 'testSupervision'.tr,
+      titleForm: 'test_supervision'.tr,
       child: Column(
         //crossAxisAlignment: CrossAxisAlignment.start,
 

@@ -4,7 +4,12 @@ import 'package:mission_timer/core/helper/utils/const.dart';
 import 'package:mission_timer/core/model/school_year_model.dart';
 
 class ChartController extends GetxController {
+  
+  
+  
+  
   int touchedIndex = -1;
+
 
   SchoolYearModel? selectedSchoolYear;
   @override

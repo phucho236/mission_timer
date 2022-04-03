@@ -9,7 +9,7 @@ class ColorsApp {
 
   static const backgroundTextField = Color(0xffEDEFF2);
 
- static const blue= Color(0xff0066b3);
+ static const  blue= Color(0xff0066b3);
   static const colorButton = Color(0xff0066b3);
   static const blackText = Color(0xff3A3E52);
   static const white = Colors.white;
