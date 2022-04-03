@@ -33,17 +33,26 @@ class MenuBar extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.notifications),
             title: Text('notification'.tr),
-            onTap: () => {Get.toNamed(NotificationScreen.router)},
+            onTap: () => {
+              Get.back(),
+              Get.toNamed(NotificationScreen.router),
+            },
           ),
           ListTile(
             leading: Icon(Icons.checklist_rounded),
             title: Text('test_supervision'.tr),
-            onTap: () => {Get.toNamed(TestSupervisionScreen.router)},
+            onTap: () => {
+              Get.back(),
+              Get.toNamed(TestSupervisionScreen.router),
+            },
           ),
           ListTile(
             leading: Icon(Icons.bar_chart),
             title: Text('chart'.tr),
-            onTap: () => {Get.toNamed(ChartScreen.router)},
+            onTap: () => {
+              Get.back(),
+              Get.toNamed(ChartScreen.router),
+            },
           ),
           ListTile(
             leading: Icon(Icons.settings),

@@ -4,21 +4,29 @@ import 'package:mission_timer/core/helper/utils/const.dart';
 import 'package:mission_timer/core/model/school_year_model.dart';
 
 class ChartController extends GetxController {
-  
-  
-  
-  
-  int touchedIndex = -1;
-
-
-  SchoolYearModel? selectedSchoolYear;
+  SchoolYearModel? schoolYearSelected;
+  String? chartSelected;
   @override
   void onInit() {
-    selectedSchoolYear = Const.lstSchoolYear.first;
+    schoolYearSelected = Const.lstSchoolYear.first;
+    chartSelected = Const.lstChart.first;
 
     super.onInit();
   }
 
+  void onChangeSchoolyeah(SchoolYearModel schoolYearModel) {
+    schoolYearSelected = schoolYearModel;
+    update(['/yearSchool']);
+  }
+
+  void onChangeChartSelected(String value) {
+    chartSelected = value;
+    update(['/type_chart', '/selectedChart']);
+  }
+}
+
+class PieChartController extends GetxController {
+  int touchedIndex = -1;
   void touchCallback(FlTouchEvent event, PieTouchResponse? pieTouchResponse) {
     if (!event.isInterestedForInteractions ||
         pieTouchResponse == null ||
@@ -29,13 +37,4 @@ class ChartController extends GetxController {
     touchedIndex = pieTouchResponse.touchedSection!.touchedSectionIndex;
     update(['/chart']);
   }
-
-  void onChangeSchoolyeah(SchoolYearModel schoolYearModel) {
-    selectedSchoolYear = schoolYearModel;
-    update(['/yearSchool']);
-  }
-
-  
-
-  
 }

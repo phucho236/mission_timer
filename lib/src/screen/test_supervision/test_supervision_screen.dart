@@ -115,7 +115,7 @@ class _TestSupervisionScreenState extends State<TestSupervisionScreen>
                       width: 10,
                     ),
                     DropdownButton<SchoolYearModel>(
-                      value: controller.selectedSchoolYear,
+                      value: controller.schoolYearSelected,
                       items: Const.lstSchoolYear
                           .map<DropdownMenuItem<SchoolYearModel>>(
                               (SchoolYearModel value) {
