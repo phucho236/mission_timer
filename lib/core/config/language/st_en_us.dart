@@ -30,11 +30,13 @@ Map<String, String> get en => {
       'ended': 'Ended',
       'ready_report': 'Ready report',
       'language': 'Language',
-      'type_chart': 'Type chart' ,
-       'pie_chart': 'Pie chart',
-        'bar_chart': 'Bar chart',
-         'old_pass': 'Old pass',
-
+      'type_chart': 'Type chart',
+      'pie_chart': 'Pie chart',
+      'bar_chart': 'Bar chart',
+      'old_pass': 'Old pass',
+      'camera': 'Camera',
+      'address': 'Address',
+      'phone': 'Phone number',
 
       //err
       //

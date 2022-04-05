@@ -29,17 +29,15 @@ Map<String, String> get vi => {
       'progress': 'Đang diễn ra',
       'ended': 'Đã kết thúc',
       'ready_report': 'Sẳn sàng báo cáo',
-      'language': 'Ngôn ngữ', 
+      'language': 'Ngôn ngữ',
 
-        'type_chart': 'Loại' ,
-        'pie_chart': 'Tròn',
-         'bar_chart': 'Cột',
-         'old_pass': 'Mật khẩu củ',
-         'camera':'Máy ảnh',
-           'address': 'Địa chỉ',
-           'phone': 'Số điện thoại'
-
-      
+      'type_chart': 'Loại',
+      'pie_chart': 'Tròn',
+      'bar_chart': 'Cột',
+      'old_pass': 'Mật khẩu củ',
+      'camera': 'Máy ảnh',
+      'address': 'Địa chỉ',
+      'phone': 'Số điện thoại',
 
       //err
       //
