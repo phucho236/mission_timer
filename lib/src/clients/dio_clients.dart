@@ -3,11 +3,12 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
-import 'package:get/get_utils/get_utils.dart';
+import 'package:get/get.dart' as getx;
 
 import 'package:mission_timer/core/clients/network_client.dart';
 import 'package:mission_timer/core/config/app_config.dart';
 import 'package:mission_timer/core/helper/enum/enum.dart';
+import 'package:mission_timer/core/helper/strorage/strorage.dart';
 
 class DioClient extends NetworkClient<dynamic, DioParams> {
   static final DioClient _instance = DioClient._internal();
@@ -39,10 +40,9 @@ class DioClient extends NetworkClient<dynamic, DioParams> {
     }
     Map<String, String> header = fields.headers ?? Map<String, String>();
     if (fields.needAuthrorize) {
-      //using hive here
-      // String? token = await storageService.getToken();
-      // header['Authorization'] = 'Bearer ${token ?? ''}';
-      // log(token.toString());
+      String? token = getx.Get.find<Strorage>().getToken;
+      header['Authorization'] = 'Bearer ${token ?? ''}';
+      log(token.toString());
     }
     log('=======>${fields.httpMethod}: $url ${fields.body.toString()}');
     try {
@@ -73,7 +73,7 @@ class DioClient extends NetworkClient<dynamic, DioParams> {
     if (headers != null) {
       dio.options = BaseOptions(
           headers: headers,
-          contentType: contentType ?? Headers.formUrlEncodedContentType,
+          contentType: contentType ?? null,
           followRedirects: false,
           validateStatus: (statusCode) {
             return statusCode! <= 1000;

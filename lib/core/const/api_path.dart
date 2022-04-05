@@ -1,3 +1,3 @@
 class Path {
-  static const login = '/auth/staff/login';
+  static const login = '/user/staff/login';
 }
