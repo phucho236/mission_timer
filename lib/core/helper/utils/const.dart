@@ -1,3 +1,4 @@
+import 'package:get/get.dart';
 import 'package:mission_timer/core/model/school_year_model.dart';
 
 class Const {
@@ -9,7 +10,7 @@ class Const {
     SchoolYearModel(id: 0, schoolYear: '2020-2021')
   ];
   static List<String> lstChart = [
-    "barChart",
-    "pieChart",
+    'bar_chart'.tr,
+    'pie_chart'.tr,
   ];
 }

@@ -31,6 +31,10 @@ Map<String, String> get vi => {
       'ready_report': 'Sẳn sàng báo cáo',
       'language': 'Ngôn ngữ', 
 
+        'type_chart': 'Loại' ,
+        'pie_chart': 'Tròn',
+         'bar_chart': 'Cột',
+
       //err
       //
       'mask_err': 'Đã có lỗi xảy ra xin vui lòng thử lại'

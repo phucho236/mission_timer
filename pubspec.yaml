@@ -52,12 +52,16 @@ dependencies:
 
 
 
+
+
   flutter_localizations:
     sdk: flutter
 
 dev_dependencies:
+  build_runner: ^2.1.8
   flutter_test:
     sdk: flutter
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

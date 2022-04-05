@@ -33,7 +33,7 @@ class ChartScreenState extends State with ThemeDataMixin {
         child: GetBuilder<ChartController>(
           init: ChartController(),
           id: '/selectedChart',
-          builder: (controller) => controller.chartSelected == 'barChart'
+          builder: (controller) => controller.chartSelected == Const.lstChart.first
               ? Column(
                   children: [
                     Expanded(
