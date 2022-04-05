@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:get/get.dart';
-import 'package:mission_timer/core/model/user_model.dart' as user;
+import 'package:mission_timer/core/model/user_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 // ignore: unused_element
@@ -13,8 +13,6 @@ class Strorage extends GetxService {
   final SharedPreferences preferences;
   Strorage({required this.preferences});
 }
-
-
 
 extension LanguageCodeStrorage on Strorage {
   Future<void> saveLanguageCode(String languageCode) async {
@@ -30,18 +28,19 @@ extension LanguageCodeStrorage on Strorage {
 }
 
 extension UserModelStrorage on Strorage {
-  Future<void> saveUserModel(user.UserModel userModel) async {
-    await preferences.setString(_USER_MODEL_KEY, userModel.toJson().toString());
+  Future<void> saveUserModel(UserModel userModel) async {
+    await preferences.setString(
+        _USER_MODEL_KEY, jsonEncode(userModel.toJson()));
   }
 
   Future<void> deleteUserModel() async {
     await preferences.remove(_USER_MODEL_KEY);
   }
 
-  user.UserModel? get getUserModel {
+  UserModel? get getUserModel {
     String? value = preferences.getString(_USER_MODEL_KEY) ?? null;
     if (value != null) {
-      return user.UserModel.fromJson(jsonDecode(value));
+      return UserModel.fromJson(jsonDecode(value));
     }
     return null;
   }

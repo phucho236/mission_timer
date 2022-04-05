@@ -34,6 +34,12 @@ Map<String, String> get vi => {
         'type_chart': 'Loại' ,
         'pie_chart': 'Tròn',
          'bar_chart': 'Cột',
+         'old_pass': 'Mật khẩu củ',
+         'camera':'Máy ảnh',
+           'address': 'Địa chỉ',
+           'phone': 'Số điện thoại'
+
+      
 
       //err
       //

@@ -10,7 +10,7 @@ import 'package:mission_timer/src/repositories/auth/i_auth_repository.dart';
 
 class AuthRepository extends IAuthRepository {
   @override
-  Future<bool>? logIn({required String id, required String pass}) async {
+  Future<UserModel>? logIn({required String id, required String pass}) async {
     final response = await handleRepositoryCall(DioClient().call(
       DioParams(HttpMethod.POST,
           needAuthrorize: false,
@@ -22,6 +22,34 @@ class AuthRepository extends IAuthRepository {
     Get.find<Strorage>().saveUserModel(userModel);
     Get.find<Strorage>().saveToken(response["token"]);
 
-    return true;
+    return userModel;
+  }
+
+  @override
+  Future<bool>? changePass(
+      {required String pass, required String confirmPass}) {
+    // TODO: implement changePass
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<bool>? sendMail({required String email}) {
+    // TODO: implement sendMail
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<bool>? firstChangePass(
+      {required String oldPass, required String newPass}) async {
+    final response = await handleRepositoryCall(DioClient().call(
+      DioParams(HttpMethod.PUT,
+          needAuthrorize: false,
+          endpoint: Path.firstChangePass,
+          body: {'currentPassword': oldPass, 'newPassword': newPass}),
+    ));
+    if (response['code'] == 1) {
+      return true;
+    }
+    return false;
   }
 }

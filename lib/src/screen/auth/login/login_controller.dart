@@ -15,9 +15,13 @@ class LoginController extends GetxController {
   AuthRepository ar = new AuthRepository();
   login() async {
     if (formKeyLoginController.currentState!.validate()) {
-      bool? reponse = await ar.logIn(
+      UserModel? reponse = await ar.logIn(
           id: idEditingController.text, pass: passController.text);
-      if (reponse!) {
+      if (reponse!.isPasswordChanged!) {
+        Get.toNamed(InputEmailScreen.router);
+      }
+      else
+      {
         Get.toNamed(HomeScreen.router);
       }
     }

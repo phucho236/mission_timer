@@ -8,6 +8,7 @@ import 'package:mission_timer/src/screen/home/home_screen.dart';
 import 'package:mission_timer/src/screen/notification/notification_screen.dart';
 import 'package:mission_timer/src/screen/splat/splat_screen.dart';
 import 'package:mission_timer/src/screen/test_supervision/test_supervision_screen.dart';
+import 'package:mission_timer/src/screen/update_profile/update_profile_screen.dart';
 
 class AppPages {
   static final pages = [
@@ -21,5 +22,7 @@ class AppPages {
     GetPage(
         name: TestSupervisionScreen.router,
         page: () => TestSupervisionScreen()),
+    GetPage(
+        name: UpdateProfileScreen.router, page: () => UpdateProfileScreen()),
   ];
 }

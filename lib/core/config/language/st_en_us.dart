@@ -33,6 +33,7 @@ Map<String, String> get en => {
       'type_chart': 'Type chart' ,
        'pie_chart': 'Pie chart',
         'bar_chart': 'Bar chart',
+         'old_pass': 'Old pass',
 
 
       //err
