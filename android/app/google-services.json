@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "515752214210",
+    "project_id": "missiontimerdev",
+    "storage_bucket": "missiontimerdev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:515752214210:android:6d1914e73eb665e170855b",
+        "android_client_info": {
+          "package_name": "com.example.mission_timer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "515752214210-gnhjd40d5oaapedkhe08d42aujj48769.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAC_zAlQU2b9OFNZJGm0MJfv-RsSi6Kg4E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "515752214210-gnhjd40d5oaapedkhe08d42aujj48769.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

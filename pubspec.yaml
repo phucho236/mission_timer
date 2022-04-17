@@ -44,7 +44,12 @@ dependencies:
 
   equatable: ^2.0.3
 
+  #calendar
+  # table_calendar:
+  #   path: ./import/table_calendar_3.0.5
+
   table_calendar: ^3.0.5
+
 #pie chart
   fl_chart: ^0.50.0
 #bar chart
@@ -52,6 +57,9 @@ dependencies:
 
 #image picker
   image_picker: ^0.8.4+11
+
+  #notification
+  onesignal_flutter: ^3.3.0
 
 
 

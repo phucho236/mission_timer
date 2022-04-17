@@ -3,3 +3,4 @@ ${BUILT_PRODUCTS_DIR}/Toast/Toast.framework
 ${BUILT_PRODUCTS_DIR}/fluttertoast/fluttertoast.framework
 ${BUILT_PRODUCTS_DIR}/image_picker/image_picker.framework
 ${BUILT_PRODUCTS_DIR}/shared_preferences_ios/shared_preferences_ios.framework
+${PODS_XCFRAMEWORKS_BUILD_DIR}/OneSignalXCFramework/OneSignal.framework/OneSignal

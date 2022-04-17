@@ -25,7 +25,7 @@ Map<String, String> get en => {
       'will_attend': 'will attend',
       'unconfimred': 'Unconfimred',
       'school_year': 'School year',
-
+      'change_pass': 'Change password',
       'progress': 'Progress',
       'ended': 'Ended',
       'ready_report': 'Ready report',
@@ -33,10 +33,13 @@ Map<String, String> get en => {
       'type_chart': 'Type chart',
       'pie_chart': 'Pie chart',
       'bar_chart': 'Bar chart',
-      'old_pass': 'Old pass',
+      'new_pass': 'New password',
+      'old_pass': 'Old password',
       'camera': 'Camera',
       'address': 'Address',
       'phone': 'Phone number',
+      'sussces': 'Sussces',
+      'hello': 'Hello',
 
       //err
       //

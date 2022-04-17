@@ -22,7 +22,8 @@ class DioClient extends NetworkClient<dynamic, DioParams> {
   //final Storage storageService = getx.Get.find();
 
   @override
-  Future<dynamic> call(DioParams fields, {String? contentType}) async {
+  Future<dynamic> call(DioParams fields,
+      {String? contentType}) async {
     String url = '';
     if (fields.url == null) {
       url = '${AppConfig.instance?.apiUrl}${fields.endpoint}';
@@ -46,11 +47,14 @@ class DioClient extends NetworkClient<dynamic, DioParams> {
     }
     log('=======>${fields.httpMethod}: $url ${fields.body.toString()}');
     try {
-      final rawResponse = (await _connect(fields.httpMethod,
-          url: url,
-          headers: header,
-          body: fields.body,
-          contentType: contentType));
+      final rawResponse = (await _connect(
+        fields.httpMethod,
+        url: url,
+        headers: header,
+        body: fields.body,
+        contentType: contentType,
+        formData: fields.formData,
+      ));
       var response;
       if (fields.shouldHandleResponse)
         response = rawResponse.handleError(fields.allowedStatusCodes);
@@ -68,6 +72,7 @@ class DioClient extends NetworkClient<dynamic, DioParams> {
     String? contentType,
     Map<String, String>? headers,
     dynamic body,
+    FormData? formData,
   }) async {
     Dio dio = Dio();
     if (headers != null) {
@@ -83,11 +88,7 @@ class DioClient extends NetworkClient<dynamic, DioParams> {
     switch (method) {
       case HttpMethod.DELETE:
         return _handleCall(() async {
-          return (await dio.delete(url,
-              data:
-                  //FormData.fromMap(body ?? {})
-                  body,
-              queryParameters: headers));
+          return (await dio.delete(url, data: body, queryParameters: headers));
         });
       case HttpMethod.GET:
         return _handleCall(() async {
@@ -96,7 +97,8 @@ class DioClient extends NetworkClient<dynamic, DioParams> {
         });
       case HttpMethod.POST:
         return _handleCall(() async {
-          return (await dio.post(url, queryParameters: headers, data: body));
+          return (await dio.post(url,
+              queryParameters: headers, data: formData ?? body));
         });
       case HttpMethod.PUT:
         return _handleCall(() async {
@@ -158,6 +160,7 @@ class DioParams {
   final Map<String, String>? headers;
   final Map<String, String>? params;
   final dynamic body;
+  final FormData? formData;
   final bool needAuthrorize;
   final bool shouldHandleResponse;
   final List<int> allowedStatusCodes;
@@ -168,6 +171,7 @@ class DioParams {
       this.headers,
       this.params,
       this.body,
+      this.formData,
       this.dynamicResponse = false,
       this.needAuthrorize = true,
       this.shouldHandleResponse = true,

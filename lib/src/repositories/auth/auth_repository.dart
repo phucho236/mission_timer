@@ -10,7 +10,8 @@ import 'package:mission_timer/src/repositories/auth/i_auth_repository.dart';
 
 class AuthRepository extends IAuthRepository {
   @override
-  Future<UserModel>? logIn({required String id, required String pass}) async {
+  Future<UserModel?>? logIn({required String id, required String pass}) async {
+    UserModel? userModel;
     final response = await handleRepositoryCall(DioClient().call(
       DioParams(HttpMethod.POST,
           needAuthrorize: false,
@@ -18,9 +19,11 @@ class AuthRepository extends IAuthRepository {
           body: {'userId': id, 'password': pass}),
     ));
 
-    var userModel = UserModel.fromJson(response["user"]);
-    Get.find<Strorage>().saveUserModel(userModel);
-    Get.find<Strorage>().saveToken(response["token"]);
+    if (response != null) {
+      userModel = UserModel.fromJson(response["user"]);
+      Get.find<Strorage>().saveUserModel(userModel);
+      Get.find<Strorage>().saveToken(response["token"]);
+    }
 
     return userModel;
   }
@@ -28,25 +31,24 @@ class AuthRepository extends IAuthRepository {
   @override
   Future<bool>? changePass(
       {required String pass, required String confirmPass}) {
-    // TODO: implement changePass
     throw UnimplementedError();
   }
 
   @override
   Future<bool>? sendMail({required String email}) {
-    // TODO: implement sendMail
     throw UnimplementedError();
   }
 
   @override
   Future<bool>? firstChangePass(
       {required String oldPass, required String newPass}) async {
-    final response = await handleRepositoryCall(DioClient().call(
-      DioParams(HttpMethod.PUT,
-          needAuthrorize: false,
-          endpoint: Path.firstChangePass,
-          body: {'currentPassword': oldPass, 'newPassword': newPass}),
-    ));
+    final response = await handleRepositoryCall(
+        DioClient().call(
+          DioParams(HttpMethod.PUT,
+              endpoint: Path.firstChangePass,
+              body: {'currentPassword': oldPass, 'newPassword': newPass}),
+        ),
+        noBody: true);
     if (response['code'] == 1) {
       return true;
     }

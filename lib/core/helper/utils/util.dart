@@ -1,12 +1,15 @@
 import 'dart:collection';
 
+import 'package:flutter/material.dart';
+import 'package:mission_timer/core/helper/utils/app_colors.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 /// Example event class.
 class Event {
   final String title;
-
-  const Event(this.title);
+  final Color? color;
+  final int index;
+  const Event(this.title, this.index, {this.color});
 
   @override
   String toString() => title;
@@ -20,14 +23,20 @@ final kEvents = LinkedHashMap<DateTime, List<Event>>(
   hashCode: getHashCode,
 )..addAll(_kEventSource);
 
-final _kEventSource = Map.fromIterable(List.generate(10, (index) => index),
+final _kEventSource = Map.fromIterable(List.generate(20, (index) => index),
     key: (item) => DateTime.utc(kFirstDay.year, kFirstDay.month, item * 5),
     value: (item) => List.generate(
-        item % 4 + 1, (index) => Event('Event $item | ${index + 1}')))
+        item % 4 + 1,
+        (index) =>
+            Event('Event $item | ${index + 1}', index, color: ColorsApp.blue)))
   ..addAll({
     kToday: [
-      Event('Today\'s Event 1'),
-      Event('Today\'s Event 2'),
+      Event('Today\'s Event 1', 0, color: ColorsApp.red),
+      Event('Today\'s Event 2', 1, color: ColorsApp.gray),
+      Event('Today\'s Event 1', 2, color: ColorsApp.red),
+      Event('Today\'s Event 2', 3, color: ColorsApp.gray),
+      Event('Today\'s Event 1', 4, color: ColorsApp.red),
+      Event('Today\'s Event 2', 5, color: ColorsApp.gray),
     ],
   });
 

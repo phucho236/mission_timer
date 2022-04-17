@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mission_timer/src/screen/update_profile/update_profile_controller.dart';
+import 'package:mission_timer/core/helper/utils/assets.dart';
+import 'package:mission_timer/src/screen/update_profile/profile_controller.dart';
+import 'package:mission_timer/src/widget/avatar.dart';
 import 'package:mission_timer/src/widget/base_layout/base_layout.dart';
 import 'package:mission_timer/src/widget/button_custom.dart';
 import 'package:mission_timer/src/widget/text_field_custom.dart';
@@ -14,8 +16,8 @@ class UpdateProfileScreen extends StatelessWidget {
     return BaseLayout(
       turnOnBack: true,
       titleForm: 'profile'.tr,
-      child: GetBuilder<UpdateProfileController>(
-          init: UpdateProfileController(),
+      child: GetBuilder<ProfileController>(
+          init: ProfileController(),
           builder: (controller) {
             return Padding(
               padding: const EdgeInsets.all(8.0),
@@ -28,30 +30,7 @@ class UpdateProfileScreen extends StatelessWidget {
                       width: 140,
                       child: Stack(
                         children: [
-                          GetBuilder<UpdateProfileController>(
-                              init: UpdateProfileController(),
-                              id: '/avatar',
-                              builder: (context) {
-                                return Container(
-                                  height: 120,
-                                  width: 120,
-                                  decoration: BoxDecoration(
-                                    image: controller.avatar != null
-                                        ? DecorationImage(
-                                            fit: BoxFit.cover,
-                                            image: AssetImage(
-                                                controller.avatar!.path))
-                                        : DecorationImage(
-                                            fit: BoxFit.cover,
-                                            image: NetworkImage(
-                                                "https://scontent.fsgn2-3.fna.fbcdn.net/v/t1.6435-9/55557199_2271955539690518_7651652999973961728_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=yzHzmi2jHWIAX-k2MIr&_nc_ht=scontent.fsgn2-3.fna&oh=00_AT9kWoAeDDcgHGfySAHkcZVtchRkkA7FSSTH-QvmnL854A&oe=627123E9"),
-                                          ),
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(30),
-                                    ),
-                                  ),
-                                );
-                              }),
+                          Avatar(),
                           Align(
                             alignment: Alignment.bottomRight,
                             child: Row(

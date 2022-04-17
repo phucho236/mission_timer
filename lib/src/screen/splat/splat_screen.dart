@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mission_timer/core/helper/utils/assets.dart';
 import 'package:mission_timer/src/screen/splat/splat_controller.dart';
 
 class SplatScreen extends StatefulWidget {
@@ -20,7 +21,7 @@ class _SplatScreenState extends State<SplatScreen> {
     return Scaffold(
       body: Center(
           child: Image.asset(
-        "assets/images/logo.png",
+        Assets.avatar,
         height: 250,
       )),
     );

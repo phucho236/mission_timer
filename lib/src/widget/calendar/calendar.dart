@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mission_timer/core/config/language/localization_service.dart';
+
 import 'package:mission_timer/core/helper/toast/toast.dart';
+import 'package:mission_timer/core/helper/utils/app_colors.dart';
+import 'package:mission_timer/core/helper/utils/theme_data.dart';
 import 'package:mission_timer/core/helper/utils/util.dart';
 import 'package:mission_timer/src/widget/calendar/calendar_controller.dart';
 import 'package:table_calendar/table_calendar.dart';
+// import 'package:table_calendar/table_calendar.dart';
 
 class Calendar extends StatefulWidget {
   @override
   _CalendarState createState() => _CalendarState();
 }
 
-class _CalendarState extends State<Calendar> {
+class _CalendarState extends State<Calendar> with ThemeDataMixin {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<CalendarController>(
@@ -28,7 +31,27 @@ class _CalendarState extends State<Calendar> {
                       CalendarFormat.twoWeeks: 'month'.tr,
                       CalendarFormat.week: '2 ' + 'week'.tr
                     },
-                    headerStyle: HeaderStyle(),
+                    calendarBuilders: CalendarBuilders(
+                      singleMarkerBuilder: (context, dateTime, event) =>
+                          event.index == 3
+                              ? Container(
+                                  decoration: BoxDecoration(
+                                    gradient: LinearGradient(
+                                      colors: [ColorsApp.blue, ColorsApp.red],
+                                    ),
+                                  ),
+                                  height: 8,
+                                  width: 10,
+                                )
+                              : Container(
+                                  height: 8,
+                                  width: 8,
+                                  decoration: BoxDecoration(
+                                    color: event.color ?? ColorsApp.blue,
+                                    shape: BoxShape.circle,
+                                  ),
+                                ),
+                    ),
                     locale: Get.locale!.languageCode,
                     firstDay: kFirstDay,
                     lastDay: kLastDay,
@@ -43,6 +66,7 @@ class _CalendarState extends State<Calendar> {
                     startingDayOfWeek: StartingDayOfWeek.monday,
                     calendarStyle: CalendarStyle(
                       outsideDaysVisible: false,
+                      markersMaxCount: 4,
                     ),
                     onDaySelected: controller.onDaySelected,
                     onRangeSelected: controller.onRangeSelected,

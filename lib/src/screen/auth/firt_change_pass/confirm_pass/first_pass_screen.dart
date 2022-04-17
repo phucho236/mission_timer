@@ -2,14 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mission_timer/core/helper/utils/theme_data.dart';
 import 'package:mission_timer/src/screen/auth/firt_change_pass/confirm_pass/%08first_change_pass_controller.dart';
-import 'package:mission_timer/src/screen/auth/forgot_pass/confirm_pass/confirm_pass_controller.dart';
 
 import 'package:mission_timer/src/widget/base_layout/base_layout_auth.dart';
 import 'package:mission_timer/src/widget/button_custom.dart';
 import 'package:mission_timer/src/widget/text_field_custom.dart';
 
 class FirstChangePassScreen extends StatefulWidget {
-  static const String router = "/ConfirmPassScreen";
+  static const String router = "/FirstChangePassScreen";
   @override
   _FirstChangePassScreenState createState() => _FirstChangePassScreenState();
 }
@@ -19,7 +18,7 @@ class _FirstChangePassScreenState extends State<FirstChangePassScreen>
   @override
   Widget build(BuildContext context) {
     return BaseLayoutAuth(
-      titleForm: 'forgot_pass'.tr.toUpperCase(),
+      titleForm: 'change_pass'.tr.toUpperCase(),
       turnOnBack: true,
       child: GetBuilder<FirstChangePassController>(
         init: FirstChangePassController(),
@@ -36,12 +35,12 @@ class _FirstChangePassScreenState extends State<FirstChangePassScreen>
                         textEditingController: ct.oldpassEditingController,
                         validate: (value) => ct.validate.validateConfirmPass(
                             value, ct.oldpassEditingController.text),
-                        hint: 'confirm_password'.tr,
+                        hint: 'old_pass'.tr,
                       ),
                       TextFieldCustom(
                         textEditingController: ct.newpassEditingController,
                         validate: (value) => ct.validate.validatePass(value),
-                        hint: 'password'.tr,
+                        hint: 'new_pass'.tr,
                       ),
                       TextFieldCustom(
                         textEditingController: ct.confirmPassEditingController,
@@ -56,7 +55,7 @@ class _FirstChangePassScreenState extends State<FirstChangePassScreen>
                 Container(
                   width: 250,
                   child: ButtonCustom(
-                    content: 'login'.tr,
+                    content: 'submit'.tr,
                     onPressed: () {
                       ct.submit();
                     },

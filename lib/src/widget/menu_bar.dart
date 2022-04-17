@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mission_timer/core/helper/utils/app_colors.dart';
+import 'package:mission_timer/core/helper/utils/theme_data.dart';
 import 'package:mission_timer/src/screen/chart/chart_screen.dart';
 import 'package:mission_timer/src/screen/notification/notification_screen.dart';
 import 'package:mission_timer/src/screen/test_supervision/test_supervision_screen.dart';
+import 'package:mission_timer/src/screen/update_profile/profile_controller.dart';
 import 'package:mission_timer/src/screen/update_profile/update_profile_screen.dart';
+import 'package:mission_timer/src/widget/avatar.dart';
 import 'package:mission_timer/src/widget/dropdow_language.dart';
 
-class MenuBar extends StatelessWidget {
+class MenuBar extends StatelessWidget with ThemeDataMixin {
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -16,12 +20,23 @@ class MenuBar extends StatelessWidget {
           DrawerHeader(
             child: Stack(
               children: [
-                Container(
-                  height: 100,
-                  width: 100,
-                  decoration: BoxDecoration(
-                      color: Colors.red,
-                      borderRadius: BorderRadius.circular(90)),
+                Avatar(),
+                Positioned(
+                  bottom: 0,
+                  child: Container(
+                    padding: EdgeInsets.all(5),
+                    decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                          ColorsApp.white.withOpacity(0.1),
+                          ColorsApp.white,
+                        ])),
+                    child: Text(
+                        "${'hello'.tr} ${Get.find<ProfileController>().userModel!.name!}",
+                        style: textTheme.titleLarge),
+                  ),
                 ),
               ],
             ),

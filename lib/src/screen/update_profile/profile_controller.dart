@@ -1,28 +1,40 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mission_timer/core/helper/strorage/strorage.dart';
+import 'package:mission_timer/core/helper/toast/toast.dart';
 import 'package:mission_timer/core/model/user_model.dart';
+import 'package:mission_timer/src/repositories/user/user_repository.dart';
 
-class UpdateProfileController extends GetxController {
+class ProfileController extends GetxController {
   final ImagePicker _picker = ImagePicker();
   TextEditingController phone = TextEditingController();
   TextEditingController address = TextEditingController();
-
   XFile? avatar;
   late UserModel? userModel;
+  final UserRepository ur = UserRepository();
   @override
   void onInit() {
-    // TODO: implement onInit
     super.onInit();
     userModel = Get.find<Strorage>().getUserModel!;
     address.text = userModel?.address ?? "";
     phone.text = userModel?.phone ?? "";
   }
 
-  void updateProfile() {}
+  void updateProfile() async {
+    bool? respone = await ur.updateProfile(
+      pathAvatar: avatar != null ? avatar!.path : null,
+      address: address.text,
+      phone: phone.text,
+      callbackUpdate: (value) {
+        if (value.isNotEmpty) update(value);
+      },
+    );
+    if (respone == true) {
+      Toast().showToat('succses'.tr);
+    }
+  }
+
   void brainImage(context) async {
     showModalBottomSheet<void>(
       context: context,
@@ -35,6 +47,7 @@ class UpdateProfileController extends GetxController {
               onTap: () async {
                 avatar = await _picker.pickImage(source: ImageSource.camera);
                 update(["/avatar"]);
+                Get.back();
               },
             ),
             ListTile(
@@ -43,6 +56,7 @@ class UpdateProfileController extends GetxController {
               onTap: () async {
                 avatar = await _picker.pickImage(source: ImageSource.gallery);
                 update(["/avatar"]);
+                Get.back();
               },
             )
           ],

@@ -30,15 +30,17 @@ Map<String, String> get vi => {
       'ended': 'Đã kết thúc',
       'ready_report': 'Sẳn sàng báo cáo',
       'language': 'Ngôn ngữ',
-
+      'change_pass': 'Đổi mật khẩu',
       'type_chart': 'Loại',
       'pie_chart': 'Tròn',
       'bar_chart': 'Cột',
+      'new_pass': 'Mật khẩu mới',
       'old_pass': 'Mật khẩu củ',
       'camera': 'Máy ảnh',
       'address': 'Địa chỉ',
       'phone': 'Số điện thoại',
-
+      'sussces': 'Thành công',
+      'hello': 'Xin chào',
       //err
       //
       'mask_err': 'Đã có lỗi xảy ra xin vui lòng thử lại'

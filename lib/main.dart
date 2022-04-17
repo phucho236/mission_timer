@@ -8,7 +8,7 @@ void main() async {
       flavorName: AppFlavor.DEVELOPMENT,
       apiUrl: 'https://mission-timer-be.herokuapp.com/api',
       appName: 'Điểm Danh ITTC',
-      oneSignalId: '60fa340b-394f-4209-be92-5a4035f0b489',
+      oneSignalId: '22906000-58fe-4443-8f57-0ffd53bd63cf',
       child: App(),
     ),
   );

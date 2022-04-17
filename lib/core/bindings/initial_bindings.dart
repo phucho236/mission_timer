@@ -1,17 +1,13 @@
 import 'package:get/get.dart';
-import 'package:mission_timer/core/helper/strorage/strorage.dart';
+import 'package:mission_timer/core/services/onesignal_service.dart';
 import 'package:mission_timer/src/screen/splat/splat_controller.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:mission_timer/src/screen/update_profile/profile_controller.dart';
 
 class InitialBinding extends Bindings {
-  late final prefs;
   @override
-  void dependencies() {
+  void dependencies() async {
+    Get.put(OnesignalService());
     Get.put(SplatController());
-
-    Get.putAsync(() async {
-      prefs = await SharedPreferences.getInstance();
-      return Strorage(preferences: prefs);
-    });
+    Get.lazyPut(() => ProfileController());
   }
 }

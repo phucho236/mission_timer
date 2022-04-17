@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:mission_timer/src/screen/auth/firt_change_pass/confirm_pass/first_pass_screen.dart';
 import 'package:mission_timer/src/screen/auth/forgot_pass/confirm_pass/confirm_pass_screen.dart';
 import 'package:mission_timer/src/screen/auth/forgot_pass/input_email/input_email_screen.dart';
 
@@ -16,6 +17,9 @@ class AppPages {
     GetPage(name: LoginScreen.router, page: () => LoginScreen()),
     GetPage(name: InputEmailScreen.router, page: () => InputEmailScreen()),
     GetPage(name: ConfirmPassScreen.router, page: () => ConfirmPassScreen()),
+    GetPage(
+        name: FirstChangePassScreen.router,
+        page: () => FirstChangePassScreen()),
     GetPage(name: HomeScreen.router, page: () => HomeScreen()),
     GetPage(name: ChartScreen.router, page: () => ChartScreen()),
     GetPage(name: NotificationScreen.router, page: () => NotificationScreen()),

@@ -16,9 +16,10 @@ class BaseLayoutAuth extends StatelessWidget with ThemeDataMixin {
   final Widget? onChild;
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Stack(
+    return Scaffold(
+      body: SafeArea(
+        bottom: false,
+        child: Stack(
           children: [
             SingleChildScrollView(
               child: Column(
