@@ -136,22 +136,20 @@ class DioClient extends NetworkClient<dynamic, DioParams> {
 
     http.MultipartRequest request =
         new http.MultipartRequest("POST", Uri.parse(url))
-          ..headers['Authorization'] = 'Bearer $token ';
+          ..headers['Authorization'] = 'Bearer $token'
+          ..headers['Content-Type'] = 'multipart/form-data';
 
     http.MultipartFile multipartFile = await http.MultipartFile.fromPath(
       field,
       path,
       filename: path.split('/').last,
-   //   contentType: MediaType("image", "${path.split('.').last}"),
     );
 
     request.files.add(multipartFile);
 
     await request.send().then(
       (response) {
-      
         if (response.statusCode == 200) return true;
-          
       },
     );
     return false;
