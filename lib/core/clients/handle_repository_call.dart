@@ -1,14 +1,17 @@
+import 'dart:developer';
+
 import 'package:mission_timer/core/helper/toast/toast.dart';
 
 dynamic handleRepositoryCall(Future<dynamic> onRemote,
     {bool? noBody = false}) async {
   try {
-    var reponse = await onRemote;
-    if (reponse['code'] == 0) {
-      throw reponse['msg'];
+    var result = await onRemote;
+    if (result['code'] == 0) {
+      throw result['msg'];
     }
-    return noBody! ? reponse : reponse['data'];
+    return noBody! ? result : result['data'];
   } catch (e) {
+    log(e.toString());
     Toast().showToat(e.toString(), err: true);
   }
 }

@@ -21,14 +21,41 @@ class ProfileController extends GetxController {
     phone.text = userModel?.phone ?? "";
   }
 
+  void getProfile() async {
+    //  bool? respone = await ur.updateProfile(
+    //     pathAvatar: avatar != null ? avatar!.path : null,
+    //     address: address.text,
+    //     phone: phone.text,
+    //     callbackUpdate: (value) {
+    //       if (value.isNotEmpty) update(value);
+    //     },
+    //   );
+    //   if (respone == true) {
+    //     Toast().showToat('succses'.tr);
+    //   }
+  }
   void updateProfile() async {
+    if (avatar != null) {
+      print(await avatar!.length());
+      Toast().showToat('posting_image'.tr);
+      ur
+          .updateAvatar(
+              path: avatar!.path,
+              callbackUpdate: (value) {
+                //   if (value.isNotEmpty) update(value);
+              })
+          ?.then(
+        (value) {
+          if (value == true) {
+            Toast().showToat('update_avatar_success'.tr);
+          }
+        },
+      );
+    }
+
     bool? respone = await ur.updateProfile(
-      pathAvatar: avatar != null ? avatar!.path : null,
       address: address.text,
       phone: phone.text,
-      callbackUpdate: (value) {
-        if (value.isNotEmpty) update(value);
-      },
     );
     if (respone == true) {
       Toast().showToat('succses'.tr);
@@ -45,7 +72,8 @@ class ProfileController extends GetxController {
               leading: Icon(Icons.camera),
               title: Text("Camera"),
               onTap: () async {
-                avatar = await _picker.pickImage(source: ImageSource.camera);
+                avatar = await _picker.pickImage(
+                    source: ImageSource.camera, imageQuality: 20);
                 update(["/avatar"]);
                 Get.back();
               },
@@ -54,7 +82,8 @@ class ProfileController extends GetxController {
               leading: Icon(Icons.image),
               title: Text("gallery"),
               onTap: () async {
-                avatar = await _picker.pickImage(source: ImageSource.gallery);
+                avatar = await _picker.pickImage(
+                    source: ImageSource.gallery, imageQuality: 20);
                 update(["/avatar"]);
                 Get.back();
               },

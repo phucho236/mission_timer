@@ -1,13 +1,13 @@
 import 'package:get/get.dart';
-import 'package:mission_timer/core/model/school_year_model.dart';
+import 'package:mission_timer/core/model/year_model.dart';
 
 class Const {
   Const(_);
-  static List<SchoolYearModel> lstSchoolYear = [
-    SchoolYearModel(id: 0, schoolYear: '2020-2021'),
-    SchoolYearModel(id: 0, schoolYear: '2018-2019'),
-    SchoolYearModel(id: 0, schoolYear: '2019-2020'),
-    SchoolYearModel(id: 0, schoolYear: '2020-2021')
+  static List<YearModel> lstSchoolYear = [
+    YearModel(id: "1", name: '2020-2021'),
+    YearModel(id: "2", name: '2018-2019'),
+    YearModel(id: "3", name: '2019-2020'),
+    YearModel(id: "4", name: '2020-2021')
   ];
   static List<String> lstChart = [
     'bar_chart'.tr,

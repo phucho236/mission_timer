@@ -18,15 +18,15 @@ class LoginController extends GetxController {
   AuthRepository ar = new AuthRepository();
   login() async {
     if (formKeyLoginController.currentState!.validate()) {
-      UserModel? reponse = await ar.logIn(
+      UserModel? result = await ar.logIn(
           id: idEditingController.text, pass: passController.text);
-      if (reponse != null) {
+      if (result != null) {
         Get.find<OnesignalService>()
             .sendTag(Get.find<Strorage>().getUserModel!.userId!);
-        if (!reponse.isPasswordChanged!) {
-          Get.toNamed(FirstChangePassScreen.router);
-        } else {
+        if (result.isPasswordChanged!) {
           Get.toNamed(HomeScreen.router);
+        } else {
+          Get.toNamed(FirstChangePassScreen.router);
         }
       }
     }

@@ -15,10 +15,10 @@ class FirstChangePassController extends GetxController {
   AuthRepository ar = AuthRepository();
   void submit() async {
     if (formKeyConfirmPassController.currentState!.validate()) {
-      bool? reponse = await ar.firstChangePass(
+      bool? result = await ar.firstChangePass(
           oldPass: oldpassEditingController.text,
           newPass: newpassEditingController.text);
-      if (reponse!) {
+      if (result!) {
         Get.offAndToNamed(LoginScreen.router);
       }
     }

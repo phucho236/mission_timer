@@ -40,6 +40,7 @@ Map<String, String> get en => {
       'phone': 'Phone number',
       'sussces': 'Sussces',
       'hello': 'Hello',
+      'update_avatar_success':'Updated avatar',
 
       //err
       //

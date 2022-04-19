@@ -1,10 +1,10 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:mission_timer/core/helper/utils/const.dart';
-import 'package:mission_timer/core/model/school_year_model.dart';
+import 'package:mission_timer/core/model/year_model.dart';
 
 class ChartController extends GetxController {
-  SchoolYearModel? schoolYearSelected;
+  YearModel? schoolYearSelected;
   String? chartSelected;
   @override
   void onInit() {
@@ -14,7 +14,7 @@ class ChartController extends GetxController {
     super.onInit();
   }
 
-  void onChangeSchoolyeah(SchoolYearModel schoolYearModel) {
+  void onChangeSchoolyeah(YearModel schoolYearModel) {
     schoolYearSelected = schoolYearModel;
     update(['/yearSchool']);
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mission_timer/core/helper/strorage/strorage.dart';
 import 'package:mission_timer/core/helper/utils/app_colors.dart';
 import 'package:mission_timer/core/helper/utils/theme_data.dart';
 import 'package:mission_timer/src/screen/chart/chart_screen.dart';
@@ -34,7 +35,7 @@ class MenuBar extends StatelessWidget with ThemeDataMixin {
                           ColorsApp.white,
                         ])),
                     child: Text(
-                        "${'hello'.tr} ${Get.find<ProfileController>().userModel!.name!}",
+                        "${'hello'.tr} ${Get.find<Strorage>().getUserModel!.name!}",
                         style: textTheme.titleLarge),
                   ),
                 ),

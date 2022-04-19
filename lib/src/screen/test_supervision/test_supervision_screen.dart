@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:mission_timer/core/helper/toast/toast.dart';
 import 'package:mission_timer/core/helper/utils/const.dart';
 import 'package:mission_timer/core/helper/utils/theme_data.dart';
-import 'package:mission_timer/core/model/school_year_model.dart';
+import 'package:mission_timer/core/model/year_model.dart';
 import 'package:mission_timer/src/screen/chart/chart_controller.dart';
 import 'package:mission_timer/src/screen/test_supervision/test_supervision_controller.dart';
 import 'package:mission_timer/src/widget/base_layout/base_layout.dart';
@@ -114,14 +114,13 @@ class _TestSupervisionScreenState extends State<TestSupervisionScreen>
                     SizedBox(
                       width: 10,
                     ),
-                    DropdownButton<SchoolYearModel>(
+                    DropdownButton<YearModel>(
                       value: controller.schoolYearSelected,
                       items: Const.lstSchoolYear
-                          .map<DropdownMenuItem<SchoolYearModel>>(
-                              (SchoolYearModel value) {
-                        return DropdownMenuItem<SchoolYearModel>(
+                          .map<DropdownMenuItem<YearModel>>((YearModel value) {
+                        return DropdownMenuItem<YearModel>(
                           value: value,
-                          child: Text(value.schoolYear!),
+                          child: Text(value.name!),
                         );
                       }).toList(),
                       onChanged: (value) =>

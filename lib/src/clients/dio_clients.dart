@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
-
 import 'package:dio/dio.dart';
+import 'package:http_parser/src/media_type.dart';
 import 'package:get/get.dart' as getx;
-
+import 'package:http/http.dart' as http;
 import 'package:mission_timer/core/clients/network_client.dart';
 import 'package:mission_timer/core/config/app_config.dart';
 import 'package:mission_timer/core/helper/enum/enum.dart';
@@ -22,8 +22,7 @@ class DioClient extends NetworkClient<dynamic, DioParams> {
   //final Storage storageService = getx.Get.find();
 
   @override
-  Future<dynamic> call(DioParams fields,
-      {String? contentType}) async {
+  Future<dynamic> call(DioParams fields, {String? contentType}) async {
     String url = '';
     if (fields.url == null) {
       url = '${AppConfig.instance?.apiUrl}${fields.endpoint}';
@@ -53,7 +52,6 @@ class DioClient extends NetworkClient<dynamic, DioParams> {
         headers: header,
         body: fields.body,
         contentType: contentType,
-        formData: fields.formData,
       ));
       var response;
       if (fields.shouldHandleResponse)
@@ -104,6 +102,10 @@ class DioClient extends NetworkClient<dynamic, DioParams> {
         return _handleCall(() async {
           return (await dio.put(url, queryParameters: headers, data: body));
         });
+      case HttpMethod.POST:
+        return _handleCall(() async {
+          return (await dio.put(url, queryParameters: headers, data: body));
+        });
       case HttpMethod.PATCH:
         return _handleCall(() async {
           return (await dio.patch(url, queryParameters: headers, data: body));
@@ -124,6 +126,35 @@ class DioClient extends NetworkClient<dynamic, DioParams> {
     } catch (e) {
       throw e.toString();
     }
+  }
+
+  @override
+  Future<bool> uploadFile(String path,
+      {required String endpoint, required String field}) async {
+    String url = '${AppConfig.instance?.apiUrl}$endpoint';
+    String token = "${getx.Get.find<Strorage>().getToken}";
+
+    http.MultipartRequest request =
+        new http.MultipartRequest("POST", Uri.parse(url))
+          ..headers['Authorization'] = 'Bearer $token ';
+
+    http.MultipartFile multipartFile = await http.MultipartFile.fromPath(
+      field,
+      path,
+      filename: path.split('/').last,
+   //   contentType: MediaType("image", "${path.split('.').last}"),
+    );
+
+    request.files.add(multipartFile);
+
+    await request.send().then(
+      (response) {
+      
+        if (response.statusCode == 200) return true;
+          
+      },
+    );
+    return false;
   }
 }
 
@@ -160,7 +191,6 @@ class DioParams {
   final Map<String, String>? headers;
   final Map<String, String>? params;
   final dynamic body;
-  final FormData? formData;
   final bool needAuthrorize;
   final bool shouldHandleResponse;
   final List<int> allowedStatusCodes;
@@ -171,7 +201,6 @@ class DioParams {
       this.headers,
       this.params,
       this.body,
-      this.formData,
       this.dynamicResponse = false,
       this.needAuthrorize = true,
       this.shouldHandleResponse = true,

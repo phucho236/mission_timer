@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mission_timer/core/helper/utils/assets.dart';
 import 'package:mission_timer/src/screen/update_profile/profile_controller.dart';
 import 'package:mission_timer/src/widget/avatar.dart';
 import 'package:mission_timer/src/widget/base_layout/base_layout.dart';

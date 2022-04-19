@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 import 'package:mission_timer/core/helper/utils/const.dart';
 import 'package:mission_timer/core/helper/utils/theme_data.dart';
-import 'package:mission_timer/core/model/school_year_model.dart';
+import 'package:mission_timer/core/model/year_model.dart';
 import 'package:mission_timer/src/screen/chart/chart_controller.dart';
 import 'package:mission_timer/src/widget/base_layout/base_layout.dart';
 import 'package:mission_timer/src/widget/chart/grouped_bar_chart.dart';
@@ -33,27 +33,28 @@ class ChartScreenState extends State with ThemeDataMixin {
         child: GetBuilder<ChartController>(
           init: ChartController(),
           id: '/selectedChart',
-          builder: (controller) => controller.chartSelected == Const.lstChart.first
-              ? Column(
-                  children: [
-                    Expanded(
-                      child: GroupedBarChart.withRandomData(),
+          builder: (controller) =>
+              controller.chartSelected == Const.lstChart.first
+                  ? Column(
+                      children: [
+                        Expanded(
+                          child: GroupedBarChart.withRandomData(),
+                        ),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [ContentChart()],
+                        ),
+                      ],
+                    )
+                  : Row(
+                      children: [
+                        Expanded(
+                          child: PieChartWidget(),
+                        ),
+                        ContentChart(),
+                      ],
                     ),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [ContentChart()],
-                    ),
-                  ],
-                )
-              : Row(
-                  children: [
-                    Expanded(
-                      child: PieChartWidget(),
-                    ),
-                    ContentChart(),
-                  ],
-                ),
         ),
       ),
     );
@@ -117,15 +118,14 @@ class ContentChart extends StatelessWidget with ThemeDataMixin {
                 SizedBox(
                   width: 10,
                 ),
-                DropdownButton<SchoolYearModel>(
+                DropdownButton<YearModel>(
                   value: controller.schoolYearSelected,
                   items: Const.lstSchoolYear
-                      .map<DropdownMenuItem<SchoolYearModel>>(
-                          (SchoolYearModel value) {
-                    return DropdownMenuItem<SchoolYearModel>(
+                      .map<DropdownMenuItem<YearModel>>((YearModel value) {
+                    return DropdownMenuItem<YearModel>(
                       value: value,
                       child: Text(
-                        value.schoolYear!,
+                        value.name!,
                         style: textTheme.subtitle1,
                       ),
                     );
