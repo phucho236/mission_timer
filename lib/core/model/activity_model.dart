@@ -1,7 +1,4 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:mission_timer/core/model/content_model.dart';
-import 'package:mission_timer/core/model/action_by_model.dart';
-import 'package:mission_timer/core/model/year_model.dart';
 part 'activity_model.g.dart';
 
 @JsonSerializable()
@@ -14,23 +11,25 @@ class ActivityModel {
     this.content,
     this.year,
     this.type,
-    this.createdBy,
+    this.idCreatedBy,
     this.createdAt,
     this.updatedAt,
-    this.updatedBy,
+    this.idUpdatedBy,
   });
   @JsonKey(name: "_id")
   final String? id;
   final String? title;
   final String? description;
   final String? quota;
-  final ContentModel? content;
-  final YearModel? year;
+  final String? content;
+  final String? year;
   final String? type;
-  final ActionByModel? createdBy;
+  @JsonKey(name: "createdBy")
+  final String? idCreatedBy;
   final DateTime? createdAt;
   final DateTime? updatedAt;
-  final ActionByModel? updatedBy;
+  @JsonKey(name: "updatedBy")
+  final String? idUpdatedBy;
 
   /// Connect the generated [_$PersonFromJson] function to the `fromJson`
   /// factory.

@@ -1,5 +1,8 @@
 import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:get/instance_manager.dart';
 import 'package:mission_timer/core/helper/utils/util.dart';
+import 'package:mission_timer/core/model/event.dart';
+import 'package:mission_timer/src/screen/home/home_screen_controller.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class CalendarController extends GetxController {
@@ -24,7 +27,7 @@ class CalendarController extends GetxController {
   }
 
   List<Event> getEventsForDay(DateTime day) {
-    return kEvents[day] ?? [];
+    return Get.find<HomeScreenController>().events[day] ?? [];
   }
 
   List<Event> getEventsForRange(DateTime start, DateTime end) {

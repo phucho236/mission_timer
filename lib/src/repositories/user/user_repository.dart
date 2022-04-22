@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
@@ -7,6 +8,8 @@ import 'package:mission_timer/core/clients/handle_repository_call.dart';
 import 'package:mission_timer/core/const/api_path.dart';
 import 'package:mission_timer/core/helper/enum/enum.dart';
 import 'package:mission_timer/core/helper/strorage/strorage.dart';
+import 'package:mission_timer/core/model/activity_model.dart';
+import 'package:mission_timer/core/model/task_model.dart';
 import 'package:mission_timer/src/clients/dio_clients.dart';
 
 import 'i_user_reponsitory.dart';
@@ -36,10 +39,6 @@ class UserRepository extends IUserRepository {
         DioClient().call(
           DioParams(
             HttpMethod.PUT,
-            headers: {
-              "Connection": "keep-alive",
-              "Accept-Encoding": "gzip, deflate, br"
-            },
             endpoint: Path.updateProfile,
             body: data,
           ),
@@ -70,10 +69,41 @@ class UserRepository extends IUserRepository {
     return false;
   }
 
+  @override
+  Future<List<ActivityModel>>? getActivity({required String idYear}) async {
+    List<ActivityModel> activitys = [];
+    final result = await handleRepositoryCall(
+      DioClient().call(
+        DioParams(
+          HttpMethod.GET,
+          endpoint: Path.getActivitys + idYear,
+        ),
+      ),
+    );
+    if (result != null) {
+      activitys = (JsonDecoder(result['activity']) as List)
+          .map((data) => ActivityModel.fromJson(data))
+          .toList();
+    }
+    return activitys;
+  }
 
   @override
-  Future<bool>? getActivity({String? path, required Function(List<String> p1) callbackUpdate}) {
-    // TODO: implement getActivity
-    throw UnimplementedError();
+  Future<List<TaskModel>>? getTask() async {
+    List<TaskModel> task = [];
+    final result = await handleRepositoryCall(
+      DioClient().call(
+        DioParams(
+          HttpMethod.GET,
+          endpoint: Path.getTasks,
+        ),
+      ),
+    );
+    if (result != null) {
+      task = (result['tasks'] as List)
+          .map((data) => TaskModel.fromJson(data))
+          .toList();
+    }
+    return task;
   }
 }

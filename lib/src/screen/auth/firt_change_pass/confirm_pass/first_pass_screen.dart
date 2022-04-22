@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mission_timer/core/helper/utils/theme_data.dart';
-import 'package:mission_timer/src/screen/auth/firt_change_pass/confirm_pass/%08first_change_pass_controller.dart';
+import 'package:mission_timer/src/screen/auth/firt_change_pass/confirm_pass/first_change_pass_controller.dart';
 
 import 'package:mission_timer/src/widget/base_layout/base_layout_auth.dart';
 import 'package:mission_timer/src/widget/button_custom.dart';

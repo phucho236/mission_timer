@@ -12,25 +12,17 @@ ActivityModel _$ActivityModelFromJson(Map<String, dynamic> json) =>
       title: json['title'] as String?,
       description: json['description'] as String?,
       quota: json['quota'] as String?,
-      content: json['content'] == null
-          ? null
-          : ContentModel.fromJson(json['content'] as Map<String, dynamic>),
-      year: json['year'] == null
-          ? null
-          : YearModel.fromJson(json['year'] as Map<String, dynamic>),
+      content: json['content'] as String?,
+      year: json['year'] as String?,
       type: json['type'] as String?,
-      createdBy: json['createdBy'] == null
-          ? null
-          : ActionByModel.fromJson(json['createdBy'] as Map<String, dynamic>),
+      idCreatedBy: json['createdBy'] as String?,
       createdAt: json['createdAt'] == null
           ? null
           : DateTime.parse(json['createdAt'] as String),
       updatedAt: json['updatedAt'] == null
           ? null
           : DateTime.parse(json['updatedAt'] as String),
-      updatedBy: json['updatedBy'] == null
-          ? null
-          : ActionByModel.fromJson(json['updatedBy'] as Map<String, dynamic>),
+      idUpdatedBy: json['updatedBy'] as String?,
     );
 
 Map<String, dynamic> _$ActivityModelToJson(ActivityModel instance) =>
@@ -42,8 +34,8 @@ Map<String, dynamic> _$ActivityModelToJson(ActivityModel instance) =>
       'content': instance.content,
       'year': instance.year,
       'type': instance.type,
-      'createdBy': instance.createdBy,
+      'createdBy': instance.idCreatedBy,
       'createdAt': instance.createdAt?.toIso8601String(),
       'updatedAt': instance.updatedAt?.toIso8601String(),
-      'updatedBy': instance.updatedBy,
+      'updatedBy': instance.idUpdatedBy,
     };
