@@ -1,9 +1,11 @@
-import 'package:get/get_state_manager/get_state_manager.dart';
-import 'package:mission_timer/core/helper/utils/util.dart';
+import 'package:mission_timer/core/model/task_model.dart';
+import 'package:mission_timer/src/screen/home/home_screen_controller.dart';
+import 'package:get/get.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class CalendarController extends GetxController {
-  late List<Event> selectedEvents;
+  HomeScreenController homeController = Get.find<HomeScreenController>();
+  late List<TaskModel> selectedTasks;
   CalendarFormat calendarFormat = CalendarFormat.month;
   RangeSelectionMode rangeSelectionMode = RangeSelectionMode
       .toggledOff; // Can be toggled on/off by longpressing a date
@@ -11,11 +13,18 @@ class CalendarController extends GetxController {
   DateTime? selectedDay;
   DateTime? rangeStart;
   DateTime? rangeEnd;
+  late DateTime today;
+  late DateTime firstDay;
+  late DateTime lastDay;
+  int? oldIndexExpand;
   @override
   void onInit() {
     super.onInit();
+    today = DateTime.now();
+    firstDay = DateTime(today.year, today.month - 3, today.day);
+    lastDay = DateTime(today.year, today.month + 3, today.day);
     selectedDay = focusedDay;
-    selectedEvents = getEventsForDay(selectedDay!);
+    selectedTasks = getEventsForDay(selectedDay!);
   }
 
   @override
@@ -23,11 +32,21 @@ class CalendarController extends GetxController {
     super.onClose();
   }
 
-  List<Event> getEventsForDay(DateTime day) {
-    return kEvents[day] ?? [];
+  List<TaskModel> getEventsForDay(DateTime day) {
+    oldIndexExpand = null;
+    return homeController.taskHashMap?[day] ?? [];
   }
 
-  List<Event> getEventsForRange(DateTime start, DateTime end) {
+  void updateExpanded(int index, bool isExpanded) {
+    if (oldIndexExpand != null && oldIndexExpand != index) {
+      selectedTasks[oldIndexExpand!].isExpanded = false;
+    }
+    selectedTasks[index].isExpanded = !isExpanded;
+    update(['/events']);
+    oldIndexExpand = index;
+  }
+
+  List<TaskModel> getEventsForRange(DateTime start, DateTime end) {
     // Implementation example
     final days = daysInRange(start, end);
     return [
@@ -36,13 +55,16 @@ class CalendarController extends GetxController {
   }
 
   void onDaySelected(DateTime selectedDayTMP, DateTime focusedDayTMP) {
+    if (oldIndexExpand != null) {
+      selectedTasks[oldIndexExpand!].isExpanded = false;
+    }
     if (!isSameDay(selectedDay, selectedDayTMP)) {
       selectedDay = selectedDayTMP;
       focusedDay = focusedDayTMP;
       rangeStart = null; // Important to clean those
       rangeEnd = null;
       rangeSelectionMode = RangeSelectionMode.toggledOff;
-      selectedEvents = getEventsForDay(selectedDayTMP);
+      selectedTasks = getEventsForDay(selectedDayTMP);
       update(['/calendar', '/events']);
     }
   }
@@ -58,6 +80,14 @@ class CalendarController extends GetxController {
     focusedDay = focusedDayTmp;
   }
 
+  List<DateTime> daysInRange(DateTime first, DateTime last) {
+    final dayCount = last.difference(first).inDays + 1;
+    return List.generate(
+      dayCount,
+      (index) => DateTime.utc(first.year, first.month, first.day + index),
+    );
+  }
+
   void onRangeSelected(DateTime? start, DateTime? end, DateTime focusedDay) {
     selectedDay = null;
     focusedDay = focusedDay;
@@ -67,11 +97,11 @@ class CalendarController extends GetxController {
 
     update(['/calendar', '/events']);
     if (start != null && end != null) {
-      selectedEvents = getEventsForRange(start, end);
+      selectedTasks = getEventsForRange(start, end);
     } else if (start != null) {
-      selectedEvents = getEventsForDay(start);
+      selectedTasks = getEventsForDay(start);
     } else if (end != null) {
-      selectedEvents = getEventsForDay(end);
+      selectedTasks = getEventsForDay(end);
     }
   }
 }

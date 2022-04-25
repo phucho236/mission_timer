@@ -41,8 +41,14 @@ Map<String, String> get vi => {
       'phone': 'Số điện thoại',
       'sussces': 'Thành công',
       'hello': 'Xin chào',
-       'update_avatar_success':'Đã cập nhật avatar',
+      'update_avatar_success': 'Đã cập nhật avatar',
       //err
       //
-      'mask_err': 'Đã có lỗi xảy ra xin vui lòng thử lại'
+      'mask_err': 'Đã có lỗi xảy ra xin vui lòng thử lại',
+      'change_status': 'Cập nhật trạng thái',
+      'save': 'Lưu',
+      'participation': 'Tham gia',
+       'do_not_participation': 'Không tham gia',
+            'answer_the_reason':'Nhập lí do',
+              'reason':'Lý do',
     };

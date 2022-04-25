@@ -40,9 +40,15 @@ Map<String, String> get en => {
       'phone': 'Phone number',
       'sussces': 'Sussces',
       'hello': 'Hello',
-      'update_avatar_success':'Updated avatar',
+      'update_avatar_success': 'Updated avatar',
 
       //err
       //
-      'mask_err': 'An error has occurred, please try again'
+      'mask_err': 'An error has occurred, please try again',
+      'change_status': 'change status task',
+      'save': 'Save',
+      'participation':'Participation',
+      'do_not_participation':'Do not participation',
+      'answer_the_reason':'Answer the reason',
+      'reason':'Reason',
     };

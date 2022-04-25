@@ -5,6 +5,7 @@ import 'package:mission_timer/core/services/onesignal_service.dart';
 import 'package:mission_timer/src/screen/auth/firt_change_pass/confirm_pass/first_pass_screen.dart';
 import 'package:mission_timer/src/screen/auth/login/login_screen.dart';
 import 'package:mission_timer/src/screen/home/home_screen.dart';
+import 'package:mission_timer/src/screen/home/home_screen_controller.dart';
 import 'package:mission_timer/src/screen/update_profile/profile_controller.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -14,11 +15,13 @@ class SplatController extends GetxController {
       return Strorage(preferences: await SharedPreferences.getInstance());
     });
     final strorage = Get.find<Strorage>();
-    ;
+
     if (strorage.getToken != null) {
       changeLanguage(strorage);
-      Get.find<ProfileController>().getProfile();
+      await Get.find<HomeScreenController>().getTasks();
+       Get.find<ProfileController>().getProfile();
       Get.find<OnesignalService>().sendTag(strorage.getUserModel!.userId!);
+
       if (strorage.getUserModel!.isPasswordChanged!) {
         Get.offAndToNamed(HomeScreen.router);
       } else {

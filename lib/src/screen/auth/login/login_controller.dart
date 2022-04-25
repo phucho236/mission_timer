@@ -9,6 +9,7 @@ import 'package:mission_timer/src/screen/auth/firt_change_pass/confirm_pass/firs
 import 'package:mission_timer/src/screen/auth/forgot_pass/input_email/input_email_screen.dart';
 
 import 'package:mission_timer/src/screen/home/home_screen.dart';
+import 'package:mission_timer/src/screen/home/home_screen_controller.dart';
 
 class LoginController extends GetxController {
   final Validate validate = Validate();
@@ -23,6 +24,7 @@ class LoginController extends GetxController {
       if (result != null) {
         Get.find<OnesignalService>()
             .sendTag(Get.find<Strorage>().getUserModel!.userId!);
+      await  Get.find<HomeScreenController>().getTasks();
         if (result.isPasswordChanged!) {
           Get.toNamed(HomeScreen.router);
         } else {

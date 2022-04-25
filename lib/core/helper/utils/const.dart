@@ -14,3 +14,5 @@ class Const {
     'pie_chart'.tr,
   ];
 }
+
+enum StatusTask { accept, refuse, done, incomplete, notAnswered }

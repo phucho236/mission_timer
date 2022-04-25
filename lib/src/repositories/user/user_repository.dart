@@ -2,11 +2,13 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:get/get.dart' as getx;
-
+import 'package:mission_timer/core/helper/extension/date_time_extension.dart';
 import 'package:mission_timer/core/clients/handle_repository_call.dart';
 import 'package:mission_timer/core/const/api_path.dart';
 import 'package:mission_timer/core/helper/enum/enum.dart';
 import 'package:mission_timer/core/helper/strorage/strorage.dart';
+import 'package:mission_timer/core/helper/utils/const.dart';
+import 'package:mission_timer/core/model/task_model.dart';
 import 'package:mission_timer/src/clients/dio_clients.dart';
 
 import 'i_user_reponsitory.dart';
@@ -36,10 +38,6 @@ class UserRepository extends IUserRepository {
         DioClient().call(
           DioParams(
             HttpMethod.PUT,
-            headers: {
-              "Connection": "keep-alive",
-              "Accept-Encoding": "gzip, deflate, br"
-            },
             endpoint: Path.updateProfile,
             body: data,
           ),
@@ -70,10 +68,56 @@ class UserRepository extends IUserRepository {
     return false;
   }
 
+  @override
+  Future<List<MergeTaskModel>?> getTasks() async {
+    List<TaskModel> taskModels = [];
+    List<MergeTaskModel> mergeTaskModels = [];
+    final result = await handleRepositoryCall(
+      DioClient().call(
+        DioParams(
+          HttpMethod.GET,
+          endpoint: Path.tasks,
+        ),
+      ),
+    );
+    if (result != null) {
+      taskModels = (result['tasks'] as List)
+          .map((data) => TaskModel.fromJson(data))
+          .toList();
+      if (taskModels.isNotEmpty) {
+        for (int i = 0; i < taskModels.length; i++) {
+          bool finded = false;
+          int index = mergeTaskModels.indexWhere((element) =>
+              element.date!.isSameDay(taskModels[i].task!.startDate!));
+          if (index != -1) {
+            finded = true;
+            mergeTaskModels[index].taskmodels!.add(taskModels[i]);
+          }
+          if (!finded) {
+            mergeTaskModels.add(MergeTaskModel(
+                date: taskModels[i].task!.startDate!,
+                taskmodels: [taskModels[i]]));
+          }
+        }
+      }
+    }
+    return mergeTaskModels;
+  }
 
   @override
-  Future<bool>? getActivity({String? path, required Function(List<String> p1) callbackUpdate}) {
-    // TODO: implement getActivity
-    throw UnimplementedError();
+  Future<bool?> updateStatusTask(String id, StatusTask status,
+      {String? content}) async {
+    Map<String, dynamic> data = {'status': status.name};
+    if (content != null) {
+      data.addAll({'content': content});
+    }
+    final result = await handleRepositoryCall(
+        DioClient().call(
+          DioParams(HttpMethod.PUT, endpoint: Path.acceptTask(id), body: data),
+        ),
+        noBody: true);
+
+    if (result['code'] == 1) return true;
+    return false;
   }
 }

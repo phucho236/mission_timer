@@ -102,10 +102,7 @@ class DioClient extends NetworkClient<dynamic, DioParams> {
         return _handleCall(() async {
           return (await dio.put(url, queryParameters: headers, data: body));
         });
-      case HttpMethod.POST:
-        return _handleCall(() async {
-          return (await dio.put(url, queryParameters: headers, data: body));
-        });
+
       case HttpMethod.PATCH:
         return _handleCall(() async {
           return (await dio.patch(url, queryParameters: headers, data: body));
@@ -142,16 +139,14 @@ class DioClient extends NetworkClient<dynamic, DioParams> {
       field,
       path,
       filename: path.split('/').last,
-   //   contentType: MediaType("image", "${path.split('.').last}"),
+      //   contentType: MediaType("image", "${path.split('.').last}"),
     );
 
     request.files.add(multipartFile);
 
     await request.send().then(
       (response) {
-      
         if (response.statusCode == 200) return true;
-          
       },
     );
     return false;

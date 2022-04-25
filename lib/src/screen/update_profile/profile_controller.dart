@@ -21,7 +21,7 @@ class ProfileController extends GetxController {
     phone.text = userModel?.phone ?? "";
   }
 
-  void getProfile() async {
+  getProfile() async {
     //  bool? respone = await ur.updateProfile(
     //     pathAvatar: avatar != null ? avatar!.path : null,
     //     address: address.text,

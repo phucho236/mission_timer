@@ -24,13 +24,13 @@ class ActivityModel {
   final String? title;
   final String? description;
   final String? quota;
-  final ContentModel? content;
-  final YearModel? year;
+  final String? content;
+  final String? year;
   final String? type;
-  final ActionByModel? createdBy;
+  final String? createdBy;
   final DateTime? createdAt;
   final DateTime? updatedAt;
-  final ActionByModel? updatedBy;
+  final String? updatedBy;
 
   /// Connect the generated [_$PersonFromJson] function to the `fromJson`
   /// factory.

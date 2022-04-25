@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mission_timer/core/helper/utils/const.dart';
 
 class ColorsApp {
   static ColorsApp shared = ColorsApp._();
@@ -9,7 +10,7 @@ class ColorsApp {
 
   static const backgroundTextField = Color(0xffEDEFF2);
 
- static const  blue= Color(0xff0066b3);
+  static const blue = Color(0xff0066b3);
   static const colorButton = Color(0xff0066b3);
   static const blackText = Color(0xff3A3E52);
   static const white = Colors.white;
@@ -22,5 +23,21 @@ class ColorsApp {
   static const fullScreenDialog = Color(0xfff2f2f2);
   static const grayLine = Color(0xffADB5D0);
   static const hyperlink = Color(0xff4285F4);
+  static getColorStatusTask(StatusTask? statusTask) {
+    switch (statusTask) {
+      case StatusTask.notAnswered:
+        return Color(0xff845bef);
+      case StatusTask.accept:
+        return hyperlink;
+      case StatusTask.incomplete:
+        return red;
+      case StatusTask.refuse:
+        return red;
+      case StatusTask.done:
+        return blue;
+      default:
+        return grayLine;
+    }
+  }
   // color
 }

@@ -9,6 +9,7 @@ dynamic handleRepositoryCall(Future<dynamic> onRemote,
     if (result['code'] == 0) {
       throw result['msg'];
     }
+
     return noBody! ? result : result['data'];
   } catch (e) {
     log(e.toString());
