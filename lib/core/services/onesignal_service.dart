@@ -10,13 +10,17 @@ class OnesignalService extends GetxService {
 
   void init() {
     OneSignal.shared.setLogLevel(OSLogLevel.verbose, OSLogLevel.none);
-
-    OneSignal.shared.setAppId("YOUR_ONESIGNAL_APP_ID");
+    OneSignal.shared.setAppId("22906000-58fe-4443-8f57-0ffd53bd63cf");
 
 // The promptForPushNotificationsWithUserResponse function will show the iOS push notification prompt. We recommend removing the following code and instead using an In-App Message to prompt for notification permission
     OneSignal.shared.promptUserForPushNotificationPermission().then((accepted) {
       print("Accepted permission: $accepted");
     });
+  }
+
+  void registerOneSignal(String userId) async {
+    await OneSignal.shared.sendTag('userId', userId);
+    await OneSignal.shared.disablePush(false);
   }
 
   void handleNotificaiton() {
@@ -52,9 +56,9 @@ class OnesignalService extends GetxService {
   }
 
 //Todo need handle logout onesignal
-  void sendTag(String userID) async {
+  void logOutOneSignal(String userID) async {
 //setWhenLogin
 // OneSignal.shared.setExternalUserId(uuid);
-    await OneSignal.shared.sendTag("userID", userID);
+    await OneSignal.shared.disablePush(false);
   }
 }

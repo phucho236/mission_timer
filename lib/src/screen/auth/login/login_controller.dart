@@ -23,8 +23,8 @@ class LoginController extends GetxController {
           id: idEditingController.text, pass: passController.text);
       if (result != null) {
         Get.find<OnesignalService>()
-            .sendTag(Get.find<Strorage>().getUserModel!.userId!);
-      await  Get.find<HomeScreenController>().getTasks();
+            .registerOneSignal(Get.find<Strorage>().getUserModel!.userId!);
+        await Get.find<HomeScreenController>().getTasks();
         if (result.isPasswordChanged!) {
           Get.toNamed(HomeScreen.router);
         } else {

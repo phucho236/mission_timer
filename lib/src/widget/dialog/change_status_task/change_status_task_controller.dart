@@ -8,9 +8,10 @@ class ChageStatusTaskController extends GetxController {
   CalendarController calendarController = Get.find<CalendarController>();
   TextEditingController contentDonotAccept = TextEditingController();
   final formKeyContentDonotAccept = GlobalKey<FormState>();
-  Task? task;
+
   bool accept = true;
   bool isLoading = false;
+
   void changeStatus(value) {
     accept = !accept;
     update(['/change_status_dialog']);
@@ -28,6 +29,8 @@ class ChageStatusTaskController extends GetxController {
         return;
       }
     }
+
+
 
     calendarController.homeController.updateStatusTask(id, () {
       isLoading = false;

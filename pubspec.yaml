@@ -58,6 +58,8 @@ dependencies:
 
   #image picker
   image_picker: ^0.8.4+11
+#badger notification
+  flutter_app_badger: ^1.4.0
 
   #notification
   onesignal_flutter: ^3.3.0

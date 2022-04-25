@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mission_timer/core/helper/utils/app_colors.dart';
+import 'package:mission_timer/core/helper/utils/const.dart';
 import 'package:mission_timer/core/helper/validate/validate.dart';
 import 'package:mission_timer/core/model/task_model.dart';
 
@@ -19,6 +20,11 @@ class ChangeStatusTask extends StatelessWidget {
         GetBuilder<ChageStatusTaskController>(
           init: ChageStatusTaskController(),
           id: '/change_status_dialog',
+          initState: (buildComplete) {
+            if (task.status == StatusTask.accept.name) {
+              buildComplete.controller!.accept = true;
+            }
+          },
           builder: (controller) {
             return Column(
               children: [

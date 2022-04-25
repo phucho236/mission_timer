@@ -1,3 +1,4 @@
+import 'package:flutter_app_badger/flutter_app_badger.dart';
 import 'package:get/get.dart';
 import 'package:mission_timer/core/config/language/localization_service.dart';
 import 'package:mission_timer/core/helper/strorage/strorage.dart';
@@ -17,10 +18,12 @@ class SplatController extends GetxController {
     final strorage = Get.find<Strorage>();
 
     if (strorage.getToken != null) {
+      FlutterAppBadger.updateBadgeCount(1);
       changeLanguage(strorage);
       await Get.find<HomeScreenController>().getTasks();
-       Get.find<ProfileController>().getProfile();
-      Get.find<OnesignalService>().sendTag(strorage.getUserModel!.userId!);
+      Get.find<ProfileController>().getProfile();
+      Get.find<OnesignalService>()
+          .registerOneSignal(strorage.getUserModel!.userId!);
 
       if (strorage.getUserModel!.isPasswordChanged!) {
         Get.offAndToNamed(HomeScreen.router);
