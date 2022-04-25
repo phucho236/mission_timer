@@ -39,6 +39,11 @@
 			<key>orderHint</key>
 			<integer>9</integer>
 		</dict>
+		<key>flutter_app_badger.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>fluttertoast.xcscheme</key>
 		<dict>
 			<key>isShown</key>
