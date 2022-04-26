@@ -37,10 +37,8 @@ class CheckIn extends StatelessWidget {
                         )
                       : controller.task!.imageBase64 != null &&
                               controller.task!.imageBase64!.isNotEmpty
-                          ? Image.memory(
-                              Base64.decode(
-                                controller.task!.imageBase64!,
-                              ),
+                          ? Image.network(
+                              controller.task!.imageBase64!,
                               fit: BoxFit.cover,
                             )
                           : Icon(Icons.image),

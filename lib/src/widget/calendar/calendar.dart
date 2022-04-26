@@ -242,11 +242,30 @@ class TaskWidget extends StatelessWidget {
               ),
             ),
             Visibility(
-              visible: taskModel.task!.endDate!
-                          .subtract(Duration(minutes: 15))
-                          .millisecondsSinceEpoch <
+              visible: taskModel.task!.startDate!.millisecondsSinceEpoch <
                       DateTime.now().millisecondsSinceEpoch &&
-                  taskModel.status == StatusTask.accept.name,
+                  DateTime.now().millisecondsSinceEpoch <
+                      taskModel.task!.endDate!.millisecondsSinceEpoch,
+              child: Container(
+                height: 10,
+                width: 10,
+                decoration: BoxDecoration(
+                    color: Colors.green,
+                    borderRadius: BorderRadius.all(Radius.circular(90))),
+              ),
+            ),
+            Visibility(
+              visible: taskModel.task!.endDate!
+                      .subtract(Duration(minutes: 15))
+                      .millisecondsSinceEpoch <
+                  DateTime.now().millisecondsSinceEpoch,
+              //     &&
+              // (taskModel.status == StatusTask.accept.name ||
+              //     taskModel.status == StatusTask.done.name) &&
+              // taskModel.task!.endDate!
+              //         .add(Duration(hours: 24))
+              //         .millisecondsSinceEpoch >
+              //     DateTime.now().millisecondsSinceEpoch,
               child: Align(
                 alignment: Alignment.centerRight,
                 child: Transform.scale(

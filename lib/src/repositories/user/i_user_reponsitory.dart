@@ -5,10 +5,12 @@ abstract class IUserRepository {
   Future<bool>? updateProfile({
     String? address,
     String? phone,
+    String? avatar,
   });
 
   Future<bool>? updateAvatar(
       {String? path, required Function(List<String>) callbackUpdate});
   Future<List<MergeTaskModel>?> getTasks();
-  Future<bool?> updateStatusTask(String id, StatusTask status,{String? content});
+  Future<bool?> updateStatusTask(String id, StatusTask status,
+      {String? content});
 }

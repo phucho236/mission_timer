@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -5,6 +7,7 @@ import 'package:mission_timer/core/helper/toast/toast.dart';
 import 'package:mission_timer/core/helper/utils/base64.dart';
 import 'package:mission_timer/core/helper/utils/const.dart';
 import 'package:mission_timer/core/model/task_model.dart';
+import 'package:mission_timer/core/services/firebase_storege_service.dart';
 import 'package:mission_timer/src/widget/calendar/calendar_controller.dart';
 
 class CheckInController extends GetxController {
@@ -28,6 +31,8 @@ class CheckInController extends GetxController {
       update(['/button_save']);
       return;
     }
+    String urlImage =
+        await Get.find<FirebaseStorageService>().putPhoto(File(image!.path));
     calendarController.homeController.updateStatusTask(id, () {
       isLoading = false;
       update(['/button_save']);
@@ -43,7 +48,7 @@ class CheckInController extends GetxController {
             calendarController.rangeStart!, calendarController.rangeEnd!);
       }
       calendarController.update(['/events', '/calendar']);
-    }, StatusTask.done, image: Base64.encode(await image!.readAsBytes()));
+    }, StatusTask.done, image: urlImage);
   }
 
   brainImage(context) async {

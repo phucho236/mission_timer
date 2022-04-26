@@ -1,8 +1,11 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:mission_timer/core/config/app_config.dart';
 import 'package:mission_timer/src/app.dart';
 
 void main() async {
+  
+
   return runApp(
     AppConfig(
       flavorName: AppFlavor.DEVELOPMENT,

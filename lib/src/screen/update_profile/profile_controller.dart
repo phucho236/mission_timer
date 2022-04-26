@@ -1,9 +1,12 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mission_timer/core/helper/strorage/strorage.dart';
 import 'package:mission_timer/core/helper/toast/toast.dart';
 import 'package:mission_timer/core/model/user_model.dart';
+import 'package:mission_timer/core/services/firebase_storege_service.dart';
 import 'package:mission_timer/src/repositories/user/user_repository.dart';
 
 class ProfileController extends GetxController {
@@ -35,27 +38,29 @@ class ProfileController extends GetxController {
     //   }
   }
   void updateProfile() async {
+    String? urlAvatar;
     if (avatar != null) {
-      print(await avatar!.length());
-      Toast().showToat('posting_image'.tr);
-      ur
-          .updateAvatar(
-              path: avatar!.path,
-              callbackUpdate: (value) {
-                //   if (value.isNotEmpty) update(value);
-              })
-          ?.then(
-        (value) {
-          if (value == true) {
-            Toast().showToat('update_avatar_success'.tr);
-          }
-        },
-      );
+      urlAvatar =
+          await Get.find<FirebaseStorageService>().putPhoto(File(avatar!.path));
+      // ur
+      //     .updateAvatar(
+      //         path: avatar!.path,
+      //         callbackUpdate: (value) {
+      //           //   if (value.isNotEmpty) update(value);
+      //         })
+      //     ?.then(
+      //   (value) {
+      //     if (value == true) {
+      //       Toast().showToat('update_avatar_success'.tr);
+      //     }
+      //   },
+      // );
     }
 
     bool? respone = await ur.updateProfile(
       address: address.text,
       phone: phone.text,
+      avatar: urlAvatar,
     );
     if (respone == true) {
       Toast().showToat('succses'.tr);

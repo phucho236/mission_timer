@@ -29,6 +29,13 @@
             {
               "client_id": "515752214210-gnhjd40d5oaapedkhe08d42aujj48769.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "515752214210-28o31553bgsataqp26a991lfo6fa6n84.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "flu.gonosen.missionTimer"
+              }
             }
           ]
         }

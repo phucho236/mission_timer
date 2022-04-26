@@ -1,4 +1,8 @@
 # This is a generated file; do not edit or check into version control.
+firebase_core=/Users/gonosen/development/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core-1.15.0/
+firebase_core_web=/Users/gonosen/development/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core_web-1.6.2/
+firebase_storage=/Users/gonosen/development/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_storage-10.2.13/
+firebase_storage_web=/Users/gonosen/development/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_storage_web-3.2.13/
 flutter_app_badger=/Users/gonosen/development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_app_badger-1.4.0/
 flutter_plugin_android_lifecycle=/Users/gonosen/development/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_plugin_android_lifecycle-2.0.5/
 fluttertoast=/Users/gonosen/development/flutter/.pub-cache/hosted/pub.dartlang.org/fluttertoast-8.0.9/

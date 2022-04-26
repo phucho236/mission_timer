@@ -18,6 +18,7 @@ class UserRepository extends IUserRepository {
   Future<bool>? updateProfile({
     String? address,
     String? phone,
+    String? avatar,
   }) async {
     Map<String, dynamic> data = {};
 
@@ -32,6 +33,9 @@ class UserRepository extends IUserRepository {
         phone.isNotEmpty &&
         phone != strorage.getUserModel!.phone) {
       data.addEntries([MapEntry("phone", phone)]);
+    }
+     if (avatar != null) {
+      data.addEntries([MapEntry("avatarBase64", avatar)]);
     }
     if (data.isNotEmpty) {
       final result = await handleRepositoryCall(
