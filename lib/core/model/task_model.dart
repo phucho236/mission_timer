@@ -16,6 +16,7 @@ class TaskModel {
     this.status,
     this.isApprove,
     this.image,
+    this.imageBase64,
     this.createdBy,
     this.createdAt,
     this.updatedAt,
@@ -27,6 +28,7 @@ class TaskModel {
   final String? status;
   final bool? isApprove;
   final String? image;
+  final String? imageBase64;
   final String? createdBy;
   final DateTime? createdAt;
   final DateTime? updatedAt;

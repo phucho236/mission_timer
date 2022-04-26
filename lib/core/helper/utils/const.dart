@@ -14,5 +14,24 @@ class Const {
     'pie_chart'.tr,
   ];
 }
+String   getNameStatusTask(String status){
+         StatusTask statusEnum = StatusTask.values.firstWhere((e) =>
+                  e.toString() ==
+                  'StatusTask.' + status);
+   switch (statusEnum) {
+      case StatusTask.notAnswered:
+        return "Chưa rõ";
+      case StatusTask.accept:
+        return "Đồng ý tham gia";
+      case StatusTask.incomplete:
+        return "Chưa hoàn thành";
+      case StatusTask.refuse:
+        return "Từ chối tham gia";
+      case StatusTask.done:
+        return "Đã hoàn thành";
+      default:
+      return "Chưa rõ";
+    }
+  }
 
 enum StatusTask { accept, refuse, done, incomplete, notAnswered }

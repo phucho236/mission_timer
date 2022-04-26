@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mission_timer/core/helper/utils/const.dart';
-import 'package:mission_timer/core/model/task_model.dart';
 import 'package:mission_timer/src/widget/calendar/calendar_controller.dart';
 
 class ChageStatusTaskController extends GetxController {

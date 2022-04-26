@@ -18,7 +18,7 @@ class SplatController extends GetxController {
     final strorage = Get.find<Strorage>();
 
     if (strorage.getToken != null) {
-      FlutterAppBadger.updateBadgeCount(1);
+      FlutterAppBadger.updateBadgeCount(10);
       changeLanguage(strorage);
       await Get.find<HomeScreenController>().getTasks();
       Get.find<ProfileController>().getProfile();

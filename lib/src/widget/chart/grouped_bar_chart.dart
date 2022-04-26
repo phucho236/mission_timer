@@ -24,24 +24,24 @@ class GroupedBarChart extends StatelessWidget {
     final thamGia = [
       new OrdinalSales('HK1', random.nextInt(100), color: Colors.red),
       new OrdinalSales('HK2', random.nextInt(100)),
-      new OrdinalSales('HK3', random.nextInt(100)),
+
     ];
 
     final khonThamgia = [
       new OrdinalSales('HK1', random.nextInt(100)),
       new OrdinalSales('HK2', random.nextInt(100)),
-      new OrdinalSales('HK3', random.nextInt(100)),
+
     ];
 
     final seThamGia = [
       new OrdinalSales('HK1', random.nextInt(100)),
       new OrdinalSales('HK2', random.nextInt(100)),
-      new OrdinalSales('HK3', random.nextInt(100)),
+  
     ];
     final chuaXacNhan = [
       new OrdinalSales('HK1', random.nextInt(100)),
       new OrdinalSales('HK2', random.nextInt(100)),
-      new OrdinalSales('HK3', random.nextInt(100)),
+     
     ];
 
     return [

@@ -46,9 +46,10 @@ class HomeScreenController extends GetxController {
 
   Future updateStatusTask(
       String idTask, Function updateLayout, StatusTask status,
-      {String? content}) async {
+      {String? content, String? image}) async {
     bool? result = false;
-    result = await ur.updateStatusTask(idTask, status, content: content);
+    result = await ur.updateStatusTask(idTask, status,
+        content: content, image: image);
 
     if (result!) {
       getTasks(updateLayout: () {

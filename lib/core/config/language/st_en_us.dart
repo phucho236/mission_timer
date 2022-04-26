@@ -46,9 +46,12 @@ Map<String, String> get en => {
       //
       'mask_err': 'An error has occurred, please try again',
       'change_status': 'change status task',
+      'check_in': 'Check in',
       'save': 'Save',
-      'participation':'Participation',
-      'do_not_participation':'Do not participation',
-      'answer_the_reason':'Answer the reason',
-      'reason':'Reason',
+      'participation': 'Participation',
+      'do_not_participation': 'Do not participation',
+      'answer_the_reason': 'Answer the reason',
+      'reason': 'Reason',
+      'pl_choose_image': 'Please choose image',
+      'status': 'Status',
     };

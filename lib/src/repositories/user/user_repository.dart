@@ -106,10 +106,13 @@ class UserRepository extends IUserRepository {
 
   @override
   Future<bool?> updateStatusTask(String id, StatusTask status,
-      {String? content}) async {
+      {String? content, String? image}) async {
     Map<String, dynamic> data = {'status': status.name};
     if (content != null) {
       data.addAll({'content': content});
+    }
+    if (image != null) {
+      data.addAll({'imageBase64': image});
     }
     final result = await handleRepositoryCall(
         DioClient().call(
