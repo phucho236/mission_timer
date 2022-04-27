@@ -8,7 +8,7 @@ import 'package:mission_timer/firebase_options.dart';
 class FirebaseStorageService extends GetxService {
   @override
   void onInit() {
-    // init();
+    init();
     super.onInit();
   }
 

@@ -97,6 +97,7 @@ class BuildPanelList extends StatelessWidget with ThemeDataMixin {
                   },
                 ),
                 body: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
                       width: 15,
@@ -115,14 +116,6 @@ class BuildPanelList extends StatelessWidget with ThemeDataMixin {
                               '${taskModel.task!.endDate!.toLocal().getTime()}',
                               style: textTheme.bodyLarge,
                             ),
-                            taskModel.imageBase64 != null &&
-                                    taskModel.imageBase64!.isNotEmpty
-                                ? Container(
-                                    child: Image.memory(
-                                      Base64.decode(taskModel.imageBase64!),
-                                    ),
-                                  )
-                                : SizedBox()
                           ],
                         ),
                         Text(
@@ -134,6 +127,15 @@ class BuildPanelList extends StatelessWidget with ThemeDataMixin {
                     SizedBox(
                       width: 15,
                     ),
+                    taskModel.imageBase64 != null &&
+                            taskModel.imageBase64!.isNotEmpty
+                        ? Container(
+                            width: 100,
+                            child: Image.network(
+                              taskModel.imageBase64!,
+                            ),
+                          )
+                        : SizedBox()
                   ],
                 ),
                 isExpanded: taskModel.isExpanded,
@@ -241,31 +243,34 @@ class TaskWidget extends StatelessWidget {
                 ),
               ),
             ),
-            Visibility(
-              visible: taskModel.task!.startDate!.millisecondsSinceEpoch <
-                      DateTime.now().millisecondsSinceEpoch &&
-                  DateTime.now().millisecondsSinceEpoch <
-                      taskModel.task!.endDate!.millisecondsSinceEpoch,
-              child: Container(
-                height: 10,
-                width: 10,
-                decoration: BoxDecoration(
-                    color: Colors.green,
-                    borderRadius: BorderRadius.all(Radius.circular(90))),
+            Positioned(
+              top: 5,
+              right: 5,
+              child: Visibility(
+                visible: taskModel.task!.startDate!.millisecondsSinceEpoch <
+                        DateTime.now().millisecondsSinceEpoch &&
+                    DateTime.now().millisecondsSinceEpoch <
+                        taskModel.task!.endDate!.millisecondsSinceEpoch,
+                child: Container(
+                  height: 10,
+                  width: 10,
+                  decoration: BoxDecoration(
+                      color: Colors.green,
+                      borderRadius: BorderRadius.all(Radius.circular(90))),
+                ),
               ),
             ),
             Visibility(
               visible: taskModel.task!.endDate!
-                      .subtract(Duration(minutes: 15))
-                      .millisecondsSinceEpoch <
-                  DateTime.now().millisecondsSinceEpoch,
-              //     &&
-              // (taskModel.status == StatusTask.accept.name ||
-              //     taskModel.status == StatusTask.done.name) &&
-              // taskModel.task!.endDate!
-              //         .add(Duration(hours: 24))
-              //         .millisecondsSinceEpoch >
-              //     DateTime.now().millisecondsSinceEpoch,
+                          .subtract(Duration(minutes: 15))
+                          .millisecondsSinceEpoch <
+                      DateTime.now().millisecondsSinceEpoch &&
+                  (taskModel.status == StatusTask.accept.name ||
+                      taskModel.status == StatusTask.done.name) &&
+                  taskModel.task!.endDate!
+                          .add(Duration(hours: 24))
+                          .millisecondsSinceEpoch >
+                      DateTime.now().millisecondsSinceEpoch,
               child: Align(
                 alignment: Alignment.centerRight,
                 child: Transform.scale(
