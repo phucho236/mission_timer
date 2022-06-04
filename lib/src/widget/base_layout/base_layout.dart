@@ -4,6 +4,7 @@ import 'package:mission_timer/core/helper/utils/theme_data.dart';
 class BaseLayout extends StatelessWidget with ThemeDataMixin {
   const BaseLayout({
     this.turnOnBack = true,
+    this.isLoading = false,
     this.titleForm = "",
     required this.child,
     Key? key,
@@ -11,6 +12,7 @@ class BaseLayout extends StatelessWidget with ThemeDataMixin {
   final bool? turnOnBack;
   final String? titleForm;
   final Widget child;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -18,15 +20,17 @@ class BaseLayout extends StatelessWidget with ThemeDataMixin {
       appBar: AppBar(
         title: Text(titleForm ?? ""),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(child: child)
-            //child,
-          ],
-        ),
-      ),
+      body: isLoading
+          ? Center(child: CircularProgressIndicator())
+          : SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(child: child)
+                  //child,
+                ],
+              ),
+            ),
     );
   }
 }

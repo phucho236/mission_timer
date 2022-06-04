@@ -7,6 +7,7 @@ import 'package:mission_timer/core/helper/strorage/strorage.dart';
 import 'package:mission_timer/core/helper/utils/const.dart';
 import 'package:mission_timer/core/model/task_model.dart';
 import 'package:mission_timer/core/model/user_model.dart';
+import 'package:mission_timer/core/model/year_model.dart';
 import 'package:mission_timer/src/clients/dio_clients.dart';
 
 import 'i_user_reponsitory.dart';
@@ -52,21 +53,6 @@ class UserRepository extends IUserRepository {
       if (result["code"] == 1) {
         return true;
       }
-    }
-    return false;
-  }
-
-  @override
-  Future<bool>? updateAvatar(
-      {String? path, required Function(List<String>) callbackUpdate}) async {
-    final result = await handleRepositoryCall(
-        DioClient()
-            .uploadFile(path!, endpoint: Path.uploadAvatar, field: 'NAME'),
-        noBody: true);
-
-    if (result != null) {
-      // callbackUpdate(['/avatar']);
-      return true;
     }
     return false;
   }
@@ -136,5 +122,31 @@ class UserRepository extends IUserRepository {
     );
 
     return UserModel.fromJson(result['profile']);
+  }
+
+  @override
+  Future<List<YearModel>> getYear() async {
+    final result = await handleRepositoryCall(
+      DioClient().call(
+        DioParams(HttpMethod.GET, endpoint: Path.getYear),
+      ),
+    );
+
+    List<YearModel>? listYear = List<YearModel>.from(
+        (result["year"]).map((x) => YearModel.fromJson(x)));
+    if (listYear.isNotEmpty) return listYear;
+    return [];
+  }
+
+  @override
+  Future<bool> getStatistical(String yearId) async {
+    final result = await handleRepositoryCall(
+      DioClient().call(
+        DioParams(HttpMethod.GET, endpoint: Path.getStatistical(yearId)),
+      ),
+    );
+
+    print(result);
+    return true;
   }
 }

@@ -26,38 +26,45 @@ class ChartScreenState extends State with ThemeDataMixin {
 
   @override
   Widget build(BuildContext context) {
-    return BaseLayout(
-      titleForm: 'chart'.tr,
-      child: AspectRatio(
-        aspectRatio: 1,
-        child: GetBuilder<ChartController>(
-          init: ChartController(),
-          id: '/selectedChart',
-          builder: (controller) =>
-              controller.chartSelected == Const.lstChart.first
-                  ? Column(
-                      children: [
-                        Expanded(
-                          child: GroupedBarChart.withRandomData(),
-                        ),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [ContentChart()],
-                        ),
-                      ],
-                    )
-                  : Row(
-                      children: [
-                        Expanded(
-                          child: PieChartWidget(),
-                        ),
-                        ContentChart(),
-                      ],
-                    ),
-        ),
-      ),
-    );
+    return GetBuilder<ChartController>(
+        id: "layout",
+        init: ChartController(),
+        builder: (controller) {
+          return BaseLayout(
+            titleForm: 'chart'.tr,
+            isLoading: controller.isLoading,
+            child: AspectRatio(
+              aspectRatio: 1,
+              child: GetBuilder<ChartController>(
+                  id: '/selectedChart',
+                  builder: (controller) =>
+                      // controller.chartSelected == Const.lstChart.first
+                      //     ?
+                      Column(
+                        children: [
+                          Expanded(
+                            child: GroupedBarChart.withRandomData(),
+                          ),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [ContentChart()],
+                          ),
+                        ],
+                      )
+                  // :
+                  // Row(
+                  //     children: [
+                  //       Expanded(
+                  //         child: PieChartWidget(),
+                  //       ),
+                  //       ContentChart(),
+                  //     ],
+                  //   ),
+                  ),
+            ),
+          );
+        });
   }
 }
 
@@ -79,28 +86,28 @@ class ContentChart extends StatelessWidget with ThemeDataMixin {
           builder: (controller) {
             return Row(
               children: [
-                Text(
-                  'type_chart'.tr,
-                  style: textTheme.subtitle1,
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                DropdownButton<String>(
-                  value: controller.chartSelected,
-                  items: Const.lstChart
-                      .map<DropdownMenuItem<String>>((String value) {
-                    return DropdownMenuItem<String>(
-                      value: value,
-                      child: Text(
-                        value,
-                        style: textTheme.subtitle1,
-                      ),
-                    );
-                  }).toList(),
-                  onChanged: (value) =>
-                      controller.onChangeChartSelected(value!),
-                ),
+                // Text(
+                //   'type_chart'.tr,
+                //   style: textTheme.subtitle1,
+                // ),
+                // SizedBox(
+                //   width: 10,
+                // ),
+                // DropdownButton<String>(
+                //   value: controller.chartSelected,
+                //   items: Const.lstChart
+                //       .map<DropdownMenuItem<String>>((String value) {
+                //     return DropdownMenuItem<String>(
+                //       value: value,
+                //       child: Text(
+                //         value,
+                //         style: textTheme.subtitle1,
+                //       ),
+                //     );
+                //   }).toList(),
+                //   onChanged: (value) =>
+                //       controller.onChangeChartSelected(value!),
+                // ),
               ],
             );
           },
