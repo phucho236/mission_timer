@@ -26,15 +26,15 @@ class SplatController extends GetxController {
           .registerOneSignal(strorage.getUserModel!.userId!);
 
       if (strorage.getUserModel!.isPasswordChanged!) {
-        Get.offAndToNamed(HomeScreen.router);
-          OnesignalService().handleNotificaiton();
+        Get.offNamedUntil(HomeScreen.router, (router) => false);
+        OnesignalService().handleNotificaiton();
       } else {
-        Get.offAndToNamed(LoginScreen.router);
+        Get.offNamedUntil(LoginScreen.router, (router) => false);
         Get.toNamed(FirstChangePassScreen.router);
       }
     } else {
       await Future.delayed(const Duration(seconds: 1));
-      Get.offAndToNamed(LoginScreen.router);
+      Get.offNamedUntil(LoginScreen.router, (router) => false);
     }
   }
 

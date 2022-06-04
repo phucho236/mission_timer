@@ -69,7 +69,7 @@ class OnesignalService extends GetxService {
   }
 
 //Todo need handle logout onesignal
-  void logOutOneSignal(String userID) async {
+  void logOutOneSignal() async {
 //setWhenLogin
 // OneSignal.shared.setExternalUserId(uuid);
     await OneSignal.shared.disablePush(false);

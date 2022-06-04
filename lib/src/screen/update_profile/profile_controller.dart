@@ -13,57 +13,42 @@ class ProfileController extends GetxController {
   final ImagePicker _picker = ImagePicker();
   TextEditingController phone = TextEditingController();
   TextEditingController address = TextEditingController();
+  TextEditingController email = TextEditingController();
   XFile? avatar;
   late UserModel? userModel;
   final UserRepository ur = UserRepository();
+  final formKeyUpdateProfile = GlobalKey<FormState>();
   @override
   void onInit() {
     super.onInit();
     userModel = Get.find<Strorage>().getUserModel!;
     address.text = userModel?.address ?? "";
     phone.text = userModel?.phone ?? "";
+    email.text = userModel?.email ?? "";
   }
 
   getProfile() async {
-    //  bool? respone = await ur.updateProfile(
-    //     pathAvatar: avatar != null ? avatar!.path : null,
-    //     address: address.text,
-    //     phone: phone.text,
-    //     callbackUpdate: (value) {
-    //       if (value.isNotEmpty) update(value);
-    //     },
-    //   );
-    //   if (respone == true) {
-    //     Toast().showToat('succses'.tr);
-    //   }
+    UserModel? respone = await ur.getProfile();
+    Get.find<Strorage>().saveUserModel(respone);
   }
+
   void updateProfile() async {
     String? urlAvatar;
     if (avatar != null) {
       urlAvatar =
           await Get.find<FirebaseStorageService>().putPhoto(File(avatar!.path));
-      // ur
-      //     .updateAvatar(
-      //         path: avatar!.path,
-      //         callbackUpdate: (value) {
-      //           //   if (value.isNotEmpty) update(value);
-      //         })
-      //     ?.then(
-      //   (value) {
-      //     if (value == true) {
-      //       Toast().showToat('update_avatar_success'.tr);
-      //     }
-      //   },
-      // );
     }
-
-    bool? respone = await ur.updateProfile(
-      address: address.text,
-      phone: phone.text,
-      avatar: urlAvatar,
-    );
-    if (respone == true) {
-      Toast().showToat('succses'.tr);
+    bool validate = formKeyUpdateProfile.currentState!.validate();
+    if (validate) {
+      bool? respone = await ur.updateProfile(
+          address: address.text,
+          phone: phone.text,
+          avatar: urlAvatar,
+          email: email.text);
+      if (respone == true) {
+        Toast().showToat('succses'.tr);
+        getProfile();
+      }
     }
   }
 

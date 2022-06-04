@@ -3,12 +3,12 @@ import 'package:get/get.dart';
 class Validate {
   String? validateEmail(String? email) {
     if (email == null || email.isEmpty) {
-      return "Vui lòng nhập email";
+      return "${'pl_input'.tr} Email.";
     }
     if (!RegExp(
             r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
         .hasMatch(email)) {
-      return "Email không đúng định dạng";
+      return "email_does_not_true".tr;
     }
     return null;
   }
@@ -16,6 +16,19 @@ class Validate {
   String? validateText(String? text, String? nameField) {
     if (text == null || text.isEmpty) {
       return "${'pl_input'.tr} $nameField.";
+    }
+    return null;
+  }
+
+  String? validatePhoneNumber(String? phone) {
+    if (phone == null || phone.isEmpty) {
+      return 'pl_input'.tr + "phone".tr;
+    }
+    if (double.tryParse(phone) == null) {
+      return "phone".tr + 'is_number'.tr;
+    }
+    if (phone.length != 10) {
+      return "phone_lengh".tr;
     }
     return null;
   }
@@ -32,7 +45,7 @@ class Validate {
 
   String? validatePass(String? passWord) {
     if (passWord == null || passWord.isEmpty) {
-      return 'pl_input'.tr + 'password'.tr;
+      return 'pl_input'.tr + ' password'.tr;
     }
 
     if (passWord.length < 5 || passWord.length > 15) {

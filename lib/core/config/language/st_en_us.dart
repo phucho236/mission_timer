@@ -7,10 +7,12 @@ Map<String, String> get en => {
       'confirm_password': 'Confirm password',
       'login': 'Login',
       'forgot_pass': 'Forgot password',
+
       'submit': 'Submit',
       'success': 'Success',
       'validate_pass': 'Passwords are between 5 and 15 characters long.',
-      'pass_does_not_match': 'Mật khẩu không trùng khớp',
+      'pass_does_not_match': 'Passwords does not matching',
+      'email_does_not_true': 'Email does not true',
       'week': 'Week',
       'month': 'Month',
       'profile': 'Profile',
@@ -38,6 +40,7 @@ Map<String, String> get en => {
       'camera': 'Camera',
       'address': 'Address',
       'phone': 'Phone number',
+      'phone_lengh': 'length Phone number must be 10',
       'sussces': 'Sussces',
       'hello': 'Hello',
       'update_avatar_success': 'Updated avatar',
@@ -54,4 +57,5 @@ Map<String, String> get en => {
       'reason': 'Reason',
       'pl_choose_image': 'Please choose image',
       'status': 'Status',
+      'user_id': 'User Id',
     };

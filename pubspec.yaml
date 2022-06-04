@@ -58,11 +58,12 @@ dependencies:
 
   #image picker
   image_picker: ^0.8.4+11
-#badger notification
+  #badger notification
   flutter_app_badger: ^1.4.0
-#date format
+  #date format
   intl: ^0.17.0
 
+  pin_code_fields: ^7.4.0
 
   #fireBase
   firebase_storage: ^10.2.13

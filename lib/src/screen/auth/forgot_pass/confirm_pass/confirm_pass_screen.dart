@@ -7,6 +7,12 @@ import 'package:mission_timer/src/widget/base_layout/base_layout_auth.dart';
 import 'package:mission_timer/src/widget/button_custom.dart';
 import 'package:mission_timer/src/widget/text_field_custom.dart';
 
+class ConfirmPassScreenArgs {
+  ConfirmPassScreenArgs({required this.otp, required this.userId});
+  final String userId;
+  final String otp;
+}
+
 class ConfirmPassScreen extends StatefulWidget {
   static const String router = "/ConfirmPassScreen";
   @override

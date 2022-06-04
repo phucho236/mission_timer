@@ -6,6 +6,7 @@ import 'package:mission_timer/core/helper/enum/enum.dart';
 import 'package:mission_timer/core/helper/strorage/strorage.dart';
 import 'package:mission_timer/core/helper/utils/const.dart';
 import 'package:mission_timer/core/model/task_model.dart';
+import 'package:mission_timer/core/model/user_model.dart';
 import 'package:mission_timer/src/clients/dio_clients.dart';
 
 import 'i_user_reponsitory.dart';
@@ -16,6 +17,7 @@ class UserRepository extends IUserRepository {
     String? address,
     String? phone,
     String? avatar,
+    String? email,
   }) async {
     Map<String, dynamic> data = {};
 
@@ -34,25 +36,25 @@ class UserRepository extends IUserRepository {
     if (avatar != null) {
       data.addEntries([MapEntry("avatar", avatar)]);
     }
+    if (email != null) {
+      data.addEntries([MapEntry("email", email)]);
+    }
     if (data.isNotEmpty) {
       final result = await handleRepositoryCall(
-        DioClient().call(
-          DioParams(
-            HttpMethod.PUT,
-            endpoint: Path.updateProfile,
-            body: data,
+          DioClient().call(
+            DioParams(
+              HttpMethod.PUT,
+              endpoint: Path.updateProfile,
+              body: data,
+            ),
           ),
-        ),
-      );
-      if (result != null) {
+          noBody: true);
+      if (result["code"] == 1) {
         return true;
       }
     }
     return false;
   }
-
-  // @override
-  // Future<bool>? postFile({String? path}) async {}
 
   @override
   Future<bool>? updateAvatar(
@@ -123,5 +125,16 @@ class UserRepository extends IUserRepository {
 
     if (result['code'] == 1) return true;
     return false;
+  }
+
+  @override
+  Future<UserModel> getProfile() async {
+    final result = await handleRepositoryCall(
+      DioClient().call(
+        DioParams(HttpMethod.GET, endpoint: Path.getProfile),
+      ),
+    );
+
+    return UserModel.fromJson(result['profile']);
   }
 }

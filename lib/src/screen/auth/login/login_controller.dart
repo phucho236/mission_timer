@@ -6,7 +6,7 @@ import 'package:mission_timer/core/model/user_model.dart';
 import 'package:mission_timer/core/services/onesignal_service.dart';
 import 'package:mission_timer/src/repositories/auth/auth_repository.dart';
 import 'package:mission_timer/src/screen/auth/firt_change_pass/confirm_pass/first_pass_screen.dart';
-import 'package:mission_timer/src/screen/auth/forgot_pass/input_email/input_email_screen.dart';
+import 'package:mission_timer/src/screen/auth/forgot_pass/input_uuid/input_uuid_screen.dart';
 
 import 'package:mission_timer/src/screen/home/home_screen.dart';
 import 'package:mission_timer/src/screen/home/home_screen_controller.dart';
@@ -37,6 +37,6 @@ class LoginController extends GetxController {
 
   void inputMail() {
     //forgot pass step 1
-    Get.toNamed(InputEmailScreen.router);
+    Get.toNamed(InputUuIdScreen.router);
   }
 }

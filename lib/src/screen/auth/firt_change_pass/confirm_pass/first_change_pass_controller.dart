@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 import 'package:get/get.dart';
 import 'package:mission_timer/core/helper/validate/validate.dart';
 import 'package:mission_timer/src/repositories/auth/auth_repository.dart';
@@ -19,7 +18,7 @@ class FirstChangePassController extends GetxController {
           oldPass: oldpassEditingController.text,
           newPass: newpassEditingController.text);
       if (result!) {
-        Get.offAndToNamed(LoginScreen.router);
+        Get.offNamedUntil(LoginScreen.router, (router) => false);
       }
     }
   }

@@ -30,13 +30,44 @@ class AuthRepository extends IAuthRepository {
 
   @override
   Future<bool>? changePass(
-      {required String pass, required String confirmPass}) {
-    throw UnimplementedError();
+      {required String pass,
+      required,
+      required String uuid,
+      required String otp}) async {
+    final response = await handleRepositoryCall(
+        DioClient().call(
+          DioParams(
+            HttpMethod.POST,
+            endpoint: Path.changePass,
+            body: {"userId": uuid, "otp": otp, "newPassword": pass},
+          ),
+        ),
+        noBody: true);
+    try {
+      if (response["code"] == 1) {
+        return true;
+      }
+    } catch (e) {}
+    return false;
   }
 
   @override
-  Future<bool>? sendMail({required String email}) {
-    throw UnimplementedError();
+  Future<bool>? sendMail({required String userId}) async {
+    final response = await handleRepositoryCall(
+        DioClient().call(
+            DioParams(
+              HttpMethod.POST,
+              endpoint: Path.forgotPassword,
+              body: {
+                'userId': userId,
+              },
+            ),
+            contentType: "Application/json"),
+        noBody: true);
+    if (response["code"] == 1) {
+      return true;
+    }
+    return false;
   }
 
   @override
@@ -52,6 +83,22 @@ class AuthRepository extends IAuthRepository {
     if (response['code'] == 1) {
       return true;
     }
+    return false;
+  }
+
+  @override
+  Future<bool>? verifyOTP({required String otp, required String userId}) async {
+    final response = await handleRepositoryCall(
+        DioClient().call(
+          DioParams(HttpMethod.POST,
+              endpoint: Path.verifyOPT, body: {'userId': userId, 'otp': otp}),
+        ),
+        noBody: true);
+    try {
+      if (response?['code'] == 1) {
+        return true;
+      }
+    } catch (e) {}
     return false;
   }
 }

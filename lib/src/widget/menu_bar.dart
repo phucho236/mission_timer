@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:mission_timer/core/helper/strorage/strorage.dart';
 import 'package:mission_timer/core/helper/utils/app_colors.dart';
 import 'package:mission_timer/core/helper/utils/theme_data.dart';
+import 'package:mission_timer/core/services/onesignal_service.dart';
+import 'package:mission_timer/src/screen/auth/login/login_screen.dart';
 import 'package:mission_timer/src/screen/chart/chart_screen.dart';
 import 'package:mission_timer/src/screen/notification/notification_screen.dart';
 import 'package:mission_timer/src/screen/test_supervision/test_supervision_screen.dart';
@@ -86,7 +88,12 @@ class MenuBar extends StatelessWidget with ThemeDataMixin {
           ListTile(
             leading: Icon(Icons.exit_to_app),
             title: Text('logout'.tr),
-            onTap: () => {Navigator.of(context).pop()},
+            onTap: () {
+              OnesignalService().logOutOneSignal();
+              Get.find<Strorage>().deleteToken();
+              Get.find<Strorage>().deleteUserModel();
+              Get.offNamedUntil(LoginScreen.router, (router) => false);
+            },
           ),
           ListTile(
             leading: Icon(Icons.language_outlined),

@@ -11,6 +11,7 @@ Map<String, String> get vi => {
       'success': 'Thành công',
       'validate_pass': 'Mật khẩu có độ dài từ 5 đến 15 kí tự.',
       'pass_does_not_match': 'Mật khẩu không trùng khớp',
+      'email_does_not_true': 'Email không đúng định dạng',
       'week': 'Tuần',
       'month': 'Tháng',
       'profile': 'Thông tin cá nhân',
@@ -54,4 +55,5 @@ Map<String, String> get vi => {
       'check_in': 'Điểm danh',
       'pl_choose_image': 'Vui lòng chọn hình ảnh',
       'status': 'Trạng thái',
+      'user_id': 'Mã giảng viên',
     };
