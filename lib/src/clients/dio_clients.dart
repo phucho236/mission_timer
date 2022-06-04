@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
 import 'package:dio/dio.dart';
-import 'package:http_parser/src/media_type.dart';
 import 'package:get/get.dart' as getx;
 import 'package:http/http.dart' as http;
 import 'package:mission_timer/core/clients/network_client.dart';

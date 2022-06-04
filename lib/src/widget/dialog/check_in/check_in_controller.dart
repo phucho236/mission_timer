@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mission_timer/core/helper/toast/toast.dart';
-import 'package:mission_timer/core/helper/utils/base64.dart';
 import 'package:mission_timer/core/helper/utils/const.dart';
 import 'package:mission_timer/core/model/task_model.dart';
 import 'package:mission_timer/core/services/firebase_storege_service.dart';

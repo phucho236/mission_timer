@@ -1,7 +1,4 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:mission_timer/core/model/content_model.dart';
-import 'package:mission_timer/core/model/action_by_model.dart';
-import 'package:mission_timer/core/model/year_model.dart';
 part 'activity_model.g.dart';
 
 @JsonSerializable()

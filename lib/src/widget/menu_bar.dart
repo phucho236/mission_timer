@@ -6,7 +6,6 @@ import 'package:mission_timer/core/helper/utils/theme_data.dart';
 import 'package:mission_timer/src/screen/chart/chart_screen.dart';
 import 'package:mission_timer/src/screen/notification/notification_screen.dart';
 import 'package:mission_timer/src/screen/test_supervision/test_supervision_screen.dart';
-import 'package:mission_timer/src/screen/update_profile/profile_controller.dart';
 import 'package:mission_timer/src/screen/update_profile/update_profile_screen.dart';
 import 'package:mission_timer/src/widget/avatar.dart';
 import 'package:mission_timer/src/widget/dropdow_language.dart';
