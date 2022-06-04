@@ -21,7 +21,7 @@ class _SplatScreenState extends State<SplatScreen> {
     return Scaffold(
       body: Center(
           child: Image.asset(
-        Assets.avatar,
+        Assets.logo,
         height: 250,
       )),
     );

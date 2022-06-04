@@ -32,6 +32,7 @@ class SplatController extends GetxController {
         Get.toNamed(FirstChangePassScreen.router);
       }
     } else {
+      await Future.delayed(const Duration(seconds: 1));
       Get.offAndToNamed(LoginScreen.router);
     }
   }

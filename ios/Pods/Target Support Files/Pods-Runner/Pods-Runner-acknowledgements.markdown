@@ -2069,7 +2069,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 
-## image_picker
+## image_picker_ios
 
 image_picker
 
