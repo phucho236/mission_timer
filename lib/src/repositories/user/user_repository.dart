@@ -1,4 +1,3 @@
-
 import 'package:get/get.dart' as getx;
 import 'package:mission_timer/core/helper/extension/date_time_extension.dart';
 import 'package:mission_timer/core/clients/handle_repository_call.dart';
@@ -32,8 +31,8 @@ class UserRepository extends IUserRepository {
         phone != strorage.getUserModel!.phone) {
       data.addEntries([MapEntry("phone", phone)]);
     }
-     if (avatar != null) {
-      data.addEntries([MapEntry("avatarBase64", avatar)]);
+    if (avatar != null) {
+      data.addEntries([MapEntry("avatar", avatar)]);
     }
     if (data.isNotEmpty) {
       final result = await handleRepositoryCall(

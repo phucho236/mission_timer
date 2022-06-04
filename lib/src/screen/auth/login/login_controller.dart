@@ -27,6 +27,7 @@ class LoginController extends GetxController {
         await Get.find<HomeScreenController>().getTasks();
         if (result.isPasswordChanged!) {
           Get.toNamed(HomeScreen.router);
+          OnesignalService().handleNotificaiton();
         } else {
           Get.toNamed(FirstChangePassScreen.router);
         }

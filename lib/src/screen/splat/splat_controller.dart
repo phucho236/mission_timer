@@ -27,6 +27,7 @@ class SplatController extends GetxController {
 
       if (strorage.getUserModel!.isPasswordChanged!) {
         Get.offAndToNamed(HomeScreen.router);
+          OnesignalService().handleNotificaiton();
       } else {
         Get.offAndToNamed(LoginScreen.router);
         Get.toNamed(FirstChangePassScreen.router);
