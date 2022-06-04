@@ -58,4 +58,5 @@ Map<String, String> get en => {
       'pl_choose_image': 'Please choose image',
       'status': 'Status',
       'user_id': 'User Id',
+      'feature_coming_soon': 'Feature coming soon'
     };

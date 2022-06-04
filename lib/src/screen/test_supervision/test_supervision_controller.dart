@@ -15,43 +15,43 @@ class TestSupervisioController extends GetxController {
         semester: 'Học kì 1',
         timeStart: null,
         timeEnd: null,
-        report: "đây là report"),
+        report: "report"),
     TestSupervisionModel(
         id: "1",
         schoolYear: "2021-2022",
-        semester: 'Học kì 1',
+        semester: 'Học kì 2',
         timeStart: null,
         timeEnd: null,
-        report: "đây là report"),
+        report: "report"),
   ];
   List<TestSupervisionModel> readyReport = [
     TestSupervisionModel(
         id: "2",
         schoolYear: "2021-2022",
-        semester: 'Học kì 1',
+        semester: 'Học kì 2',
         timeStart: null,
         timeEnd: null,
-        report: "đây là report"),
+        report: "report"),
     TestSupervisionModel(
         id: "3",
         schoolYear: "2021-2022",
-        semester: 'Học kì 1',
+        semester: 'Học kì 2',
         timeStart: null,
         timeEnd: null,
-        report: "đây là report"),
+        report: "report"),
   ];
   List<TestSupervisionModel> endeds = [
     TestSupervisionModel(
         id: "4",
-        schoolYear: "2021-2022",
+        schoolYear: "2020-2021",
         semester: 'Học kì 1',
         timeStart: null,
         timeEnd: null,
         report: "đây là report"),
     TestSupervisionModel(
         id: "5",
-        schoolYear: "2021-2022",
-        semester: 'Học kì 1',
+        schoolYear: "2020-2021",
+        semester: 'Học kì 2',
         timeStart: null,
         timeEnd: null,
         report: "đây là report"),

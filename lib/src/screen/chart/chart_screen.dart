@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'package:mission_timer/core/helper/utils/const.dart';
 import 'package:mission_timer/core/helper/utils/theme_data.dart';
 import 'package:mission_timer/core/model/year_model.dart';
 import 'package:mission_timer/src/screen/chart/chart_controller.dart';
 import 'package:mission_timer/src/widget/base_layout/base_layout.dart';
 import 'package:mission_timer/src/widget/chart/grouped_bar_chart.dart';
 import 'package:mission_timer/src/widget/chart/indicators.dart';
-import 'package:mission_timer/src/widget/chart/pie_chart_widget.dart';
 
 class ChartScreen extends StatefulWidget {
   static const String router = "/ChartScreen";
@@ -37,13 +35,56 @@ class ChartScreenState extends State with ThemeDataMixin {
               aspectRatio: 1,
               child: GetBuilder<ChartController>(
                   id: '/selectedChart',
-                  builder: (controller) =>
-                      // controller.chartSelected == Const.lstChart.first
-                      //     ?
-                      Column(
+                  builder: (controller) => Column(
                         children: [
                           Expanded(
-                            child: GroupedBarChart.withRandomData(),
+                            child: GroupedBarChart.withData(
+                                controller.listStatisModel),
+                          ),
+                          Row(
+                            children: [
+                              SizedBox(
+                                width: 55,
+                              ),
+                              Expanded(
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                        "${controller.listStatisModel[0].countDone!}"),
+                                    Text(
+                                        "${controller.listStatisModel[0].countAccepted!}"),
+                                    Text(
+                                        "${controller.listStatisModel[0].notAnswered!}"),
+                                    Text(
+                                        "${controller.listStatisModel[0].countRefuse! + controller.listStatisModel[0].countIncomplete!}"),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                width: 80,
+                              ),
+                              Expanded(
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                        "${controller.listStatisModel[1].countDone!}"),
+                                    Text(
+                                        "${controller.listStatisModel[1].countAccepted!}"),
+                                    Text(
+                                        "${controller.listStatisModel[1].notAnswered!}"),
+                                    Text(
+                                        "${controller.listStatisModel[1].countRefuse!}"),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                width: 55,
+                              ),
+                            ],
                           ),
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.end,
@@ -127,7 +168,7 @@ class ContentChart extends StatelessWidget with ThemeDataMixin {
                 ),
                 DropdownButton<YearModel>(
                   value: controller.schoolYearSelected,
-                  items: Const.lstSchoolYear
+                  items: controller.listYearModel
                       .map<DropdownMenuItem<YearModel>>((YearModel value) {
                     return DropdownMenuItem<YearModel>(
                       value: value,

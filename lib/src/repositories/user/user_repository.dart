@@ -5,6 +5,7 @@ import 'package:mission_timer/core/const/api_path.dart';
 import 'package:mission_timer/core/helper/enum/enum.dart';
 import 'package:mission_timer/core/helper/strorage/strorage.dart';
 import 'package:mission_timer/core/helper/utils/const.dart';
+import 'package:mission_timer/core/model/statistical_model.dart';
 import 'package:mission_timer/core/model/task_model.dart';
 import 'package:mission_timer/core/model/user_model.dart';
 import 'package:mission_timer/core/model/year_model.dart';
@@ -131,22 +132,25 @@ class UserRepository extends IUserRepository {
         DioParams(HttpMethod.GET, endpoint: Path.getYear),
       ),
     );
-
+    print(result);
     List<YearModel>? listYear = List<YearModel>.from(
-        (result["year"]).map((x) => YearModel.fromJson(x)));
+        (result["years"]).map((x) => YearModel.fromJson(x)));
     if (listYear.isNotEmpty) return listYear;
     return [];
   }
 
   @override
-  Future<bool> getStatistical(String yearId) async {
+  Future<List<StatisticalModel>> getStatistical(String yearId) async {
     final result = await handleRepositoryCall(
       DioClient().call(
-        DioParams(HttpMethod.GET, endpoint: Path.getStatistical(yearId)),
+        DioParams(HttpMethod.GET,
+            endpoint: Path.getStatistical, params: {"year": yearId}),
       ),
     );
 
-    print(result);
-    return true;
+    List<StatisticalModel> listStatis = List<StatisticalModel>.from(
+        (result["statistic"]).map((x) => StatisticalModel.fromJson(x)));
+    if (listStatis.isNotEmpty) return listStatis;
+    return [];
   }
 }

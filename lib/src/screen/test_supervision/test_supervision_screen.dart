@@ -101,8 +101,8 @@ class _TestSupervisionScreenState extends State<TestSupervisionScreen>
           ),
           TitleBar(
             title: 'ended'.tr,
-            widget: GetBuilder<ChartController>(
-              init: ChartController(),
+            widget: GetBuilder<TestSupervisioController>(
+              init: TestSupervisioController(),
               id: '/yearSchool',
               builder: (controller) {
                 return Row(
@@ -114,18 +114,18 @@ class _TestSupervisionScreenState extends State<TestSupervisionScreen>
                     SizedBox(
                       width: 10,
                     ),
-                    DropdownButton<YearModel>(
-                      value: controller.schoolYearSelected,
-                      items: Const.lstSchoolYear
-                          .map<DropdownMenuItem<YearModel>>((YearModel value) {
-                        return DropdownMenuItem<YearModel>(
-                          value: value,
-                          child: Text(value.name!),
-                        );
-                      }).toList(),
-                      onChanged: (value) =>
-                          controller.onChangeSchoolyeah(value!),
-                    ),
+                    // DropdownButton<YearModel>(
+                    //   value: controller.schoolYearSelected,
+                    //   items: Const.lstSchoolYear
+                    //       .map<DropdownMenuItem<YearModel>>((YearModel value) {
+                    //     return DropdownMenuItem<YearModel>(
+                    //       value: value,
+                    //       child: Text(value.name!),
+                    //     );
+                    //   }).toList(),
+                    //   onChanged: (value) =>
+                    //       controller.onChangeSchoolyeah(value!),
+                    // ),
                   ],
                 );
               },

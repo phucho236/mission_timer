@@ -10,5 +10,5 @@ class Path {
   static const forgotPassword = '/user/password/forgot-password';
   static const verifyOPT = '/user/password/check-otp';
   static const getYear = '/year';
-  static getStatistical(String yearId) => '/statistical/user/$yearId';
+  static const getStatistical = '/statistical/user';
 }

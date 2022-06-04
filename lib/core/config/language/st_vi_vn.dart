@@ -56,4 +56,5 @@ Map<String, String> get vi => {
       'pl_choose_image': 'Vui lòng chọn hình ảnh',
       'status': 'Trạng thái',
       'user_id': 'Mã giảng viên',
+      'feature_coming_soon':'Tính năng đang phát triển'
     };

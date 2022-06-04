@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mission_timer/core/helper/strorage/strorage.dart';
+import 'package:mission_timer/core/helper/toast/toast.dart';
 import 'package:mission_timer/core/helper/utils/app_colors.dart';
 import 'package:mission_timer/core/helper/utils/theme_data.dart';
 import 'package:mission_timer/core/services/onesignal_service.dart';
@@ -57,6 +58,7 @@ class MenuBar extends StatelessWidget with ThemeDataMixin {
             onTap: () => {
               Get.back(),
               Get.toNamed(NotificationScreen.router),
+              Toast().showToat("feature_coming_soon".tr),
             },
           ),
           ListTile(
@@ -65,6 +67,7 @@ class MenuBar extends StatelessWidget with ThemeDataMixin {
             onTap: () => {
               Get.back(),
               Get.toNamed(TestSupervisionScreen.router),
+              Toast().showToat("feature_coming_soon".tr),
             },
           ),
           ListTile(
@@ -78,12 +81,18 @@ class MenuBar extends StatelessWidget with ThemeDataMixin {
           ListTile(
             leading: Icon(Icons.settings),
             title: Text('settings'.tr),
-            onTap: () => {Navigator.of(context).pop()},
+            onTap: () => {
+              Navigator.of(context).pop(),
+              Toast().showToat("feature_coming_soon".tr),
+            },
           ),
           ListTile(
             leading: Icon(Icons.border_color),
             title: Text('feedback'.tr),
-            onTap: () => {Navigator.of(context).pop()},
+            onTap: () => {
+              Navigator.of(context).pop(),
+              Toast().showToat("feature_coming_soon".tr),
+            },
           ),
           ListTile(
             leading: Icon(Icons.exit_to_app),
