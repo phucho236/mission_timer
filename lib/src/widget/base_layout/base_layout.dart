@@ -7,12 +7,14 @@ class BaseLayout extends StatelessWidget with ThemeDataMixin {
     this.isLoading = false,
     this.titleForm = "",
     required this.child,
+    this.isSingleChildScrollView = true,
     Key? key,
   }) : super(key: key);
   final bool? turnOnBack;
   final String? titleForm;
   final Widget child;
   final bool isLoading;
+  final bool isSingleChildScrollView;
 
   @override
   Widget build(BuildContext context) {
@@ -22,15 +24,17 @@ class BaseLayout extends StatelessWidget with ThemeDataMixin {
       ),
       body: isLoading
           ? Center(child: CircularProgressIndicator())
-          : SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(child: child)
-                  //child,
-                ],
-              ),
-            ),
+          : isSingleChildScrollView
+              ? SingleChildScrollView(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(child: child)
+                      //child,
+                    ],
+                  ),
+                )
+              : child,
     );
   }
 }

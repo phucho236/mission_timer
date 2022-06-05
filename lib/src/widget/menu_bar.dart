@@ -58,7 +58,6 @@ class MenuBar extends StatelessWidget with ThemeDataMixin {
             onTap: () => {
               Get.back(),
               Get.toNamed(NotificationScreen.router),
-              Toast().showToat("feature_coming_soon".tr),
             },
           ),
           ListTile(

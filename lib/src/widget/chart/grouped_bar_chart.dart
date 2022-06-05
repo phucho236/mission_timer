@@ -18,9 +18,11 @@ class GroupedBarChart extends StatelessWidget {
     return new GroupedBarChart(_createData(data));
   }
   static int formatInt(a, b) {
-    final value = b / a;
+    //final value = b / a;
+    final value = b;
     if (value.isNaN) return 0;
-    return value.round();
+    // return (value * 100).ceil();
+    return value;
   }
 
   /// Create random data.

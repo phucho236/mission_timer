@@ -22,6 +22,7 @@ Map<String, String> get en => {
       'test_supervision': 'Test Supervision',
       'chart': 'Chart',
       'notification': 'Notification',
+      'detail_notification': 'Detail notification',
       'attended': 'Attended',
       'not_attended_yet': 'Not attende yet',
       'will_attend': 'will attend',
@@ -53,10 +54,11 @@ Map<String, String> get en => {
       'save': 'Save',
       'participation': 'Participation',
       'do_not_participation': 'Do not participation',
-      'answer_the_reason': 'Answer the reason',
+      'answer_the_reason': 'Nhập lí do',
       'reason': 'Reason',
       'pl_choose_image': 'Please choose image',
       'status': 'Status',
       'user_id': 'User Id',
+      'total': 'Total',
       'feature_coming_soon': 'Feature coming soon'
     };

@@ -7,8 +7,10 @@ class Path {
   static const tasks = '/task/me';
   static acceptTask(String id) => '/participant/answers/$id';
   static const getProfile = '/user/me';
+  static const getNotification = '/notification/me';
   static const forgotPassword = '/user/password/forgot-password';
   static const verifyOPT = '/user/password/check-otp';
   static const getYear = '/year';
   static const getStatistical = '/statistical/user';
+  static updateReadedNoti(String id) => 'notification/seen/$id';
 }

@@ -1,6 +1,11 @@
 import 'package:flutter_app_badger/flutter_app_badger.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:mission_timer/src/screen/home/home_screen_controller.dart';
+import 'package:mission_timer/src/screen/notification/notification_controller.dart';
+import 'package:mission_timer/src/screen/notification/notification_screen.dart';
+import 'package:mission_timer/src/widget/calendar/calendar_controller.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
+import 'package:get/get.dart';
 
 class OnesignalService extends GetxService {
   @override
@@ -32,10 +37,38 @@ class OnesignalService extends GetxService {
         print(event.notification.badge);
         FlutterAppBadger.updateBadgeCount(
             event.notification.badgeIncrement ?? 1);
+        print("type" + event.notification.additionalData!['type']);
         switch (event.notification.additionalData!['type']) {
-          case 'Comment':
-            break;
+          case 'task':
+            try {
+              var calendarController = Get.find<CalendarController>();
+              var homeScreenController = Get.find<HomeScreenController>();
 
+              //get new task
+              homeScreenController.getTasks(updateLayout: () {
+                //update event for day day selected
+                if (calendarController.selectedDay != null) {
+                  calendarController.selectedTasks = calendarController
+                      .getEventsForDay(calendarController.selectedDay!);
+                }
+                //update event for range day selected
+                if (calendarController.rangeStart != null &&
+                    calendarController.rangeEnd != null) {
+                  calendarController.selectedTasks =
+                      calendarController.getEventsForRange(
+                          calendarController.rangeStart!,
+                          calendarController.rangeEnd!);
+                }
+                calendarController.update(['/events', '/calendar']);
+              });
+            } catch (e) {}
+            break;
+          case 'admin':
+            try {
+              Get.find<NotificationController>().getData(pageInput: 1);
+            } catch (e) {}
+
+            break;
           default:
             break;
         }
@@ -45,33 +78,29 @@ class OnesignalService extends GetxService {
     // Will be called whenever a notification is received in foreground
     // Display Notification, pass null param for not displaying the notification
 
-    OneSignal.shared
-        .setNotificationOpenedHandler((OSNotificationOpenedResult result) {
-      // Will be called whenever a notification is opened/button pressed.
-    });
+    OneSignal.shared.setNotificationOpenedHandler(
+      (OSNotificationOpenedResult result) {
+        // Will be called whenever a notification is opened/button pressed.
 
-    // OneSignal.shared.setPermissionObserver((OSPermissionStateChanges changes) {
-    //   // Will be called whenever the permission changes
-    //   // (ie. user taps Allow on the permission prompt in iOS)
-    // });
+        print('New notification: ${result.notification.additionalData}');
 
-    // OneSignal.shared
-    //     .setSubscriptionObserver((OSSubscriptionStateChanges changes) {
-    //   // Will be called whenever the subscription changes
-    //   // (ie. user gets registered with OneSignal and gets a user ID)
-    // });
-
-    // OneSignal.shared.setEmailSubscriptionObserver(
-    //     (OSEmailSubscriptionStateChanges emailChanges) {
-    //   // Will be called whenever then user's email subscription changes
-    //   // (ie. OneSignal.setEmail(email) is called and the user gets registered
-    // });
+        switch (result.notification.additionalData!['type']) {
+          case 'task':
+            //defaut
+            break;
+          case 'admin':
+            Get.toNamed(NotificationScreen.router);
+            break;
+          default:
+            break;
+        }
+      },
+    );
   }
 
 //Todo need handle logout onesignal
   void logOutOneSignal() async {
-//setWhenLogin
-// OneSignal.shared.setExternalUserId(uuid);
+    FlutterAppBadger.removeBadge();
     await OneSignal.shared.disablePush(false);
   }
 }

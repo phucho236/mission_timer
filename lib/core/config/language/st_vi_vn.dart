@@ -21,6 +21,7 @@ Map<String, String> get vi => {
       'test_supervision': 'Lịch Canh Thi',
       'chart': 'Biểu đồ',
       'notification': 'Thông báo',
+       'detail_notification': 'Chi tiết thông báo',
       'attended': 'Đã tham gia',
       'not_attended_yet': 'không tham gia',
       'will_attend': 'Sẽ tham gia',
@@ -56,5 +57,6 @@ Map<String, String> get vi => {
       'pl_choose_image': 'Vui lòng chọn hình ảnh',
       'status': 'Trạng thái',
       'user_id': 'Mã giảng viên',
+       'total':'Tổng',
       'feature_coming_soon':'Tính năng đang phát triển'
     };

@@ -22,6 +22,10 @@ class ChartScreenState extends State with ThemeDataMixin {
     super.initState();
   }
 
+  String fortmatText(int value) {
+    return value < 10 ? " $value" : "$value";
+  }
+
   @override
   Widget build(BuildContext context) {
     return GetBuilder<ChartController>(
@@ -44,40 +48,42 @@ class ChartScreenState extends State with ThemeDataMixin {
                           Row(
                             children: [
                               SizedBox(
-                                width: 55,
+                                width: 50,
                               ),
                               Expanded(
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text(
-                                        "${controller.listStatisModel[0].countDone!}"),
-                                    Text(
-                                        "${controller.listStatisModel[0].countAccepted!}"),
-                                    Text(
-                                        "${controller.listStatisModel[0].notAnswered!}"),
-                                    Text(
-                                        "${controller.listStatisModel[0].countRefuse! + controller.listStatisModel[0].countIncomplete!}"),
+                                    Text(fortmatText(controller
+                                        .listStatisModel[0].countDone!)),
+                                    Text(fortmatText(controller
+                                        .listStatisModel[0].countAccepted!)),
+                                    Text(fortmatText(controller
+                                        .listStatisModel[0].notAnswered!)),
+                                    Text(fortmatText(controller
+                                            .listStatisModel[0].countRefuse! +
+                                        controller.listStatisModel[0]
+                                            .countIncomplete!)),
                                   ],
                                 ),
                               ),
                               SizedBox(
-                                width: 80,
+                                width: 70,
                               ),
                               Expanded(
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text(
-                                        "${controller.listStatisModel[1].countDone!}"),
-                                    Text(
-                                        "${controller.listStatisModel[1].countAccepted!}"),
-                                    Text(
-                                        "${controller.listStatisModel[1].notAnswered!}"),
-                                    Text(
-                                        "${controller.listStatisModel[1].countRefuse!}"),
+                                    Text(fortmatText(controller
+                                        .listStatisModel[1].countDone!)),
+                                    Text(fortmatText(controller
+                                        .listStatisModel[1].countAccepted!)),
+                                    Text(fortmatText(controller
+                                        .listStatisModel[1].notAnswered!)),
+                                    Text(fortmatText(controller
+                                        .listStatisModel[1].countRefuse!)),
                                   ],
                                 ),
                               ),
@@ -184,7 +190,19 @@ class ContentChart extends StatelessWidget with ThemeDataMixin {
             );
           },
         ),
-        Indicators()
+        Indicators(),
+        GetBuilder<ChartController>(
+          builder: (controller) {
+            return Column(
+              children: [
+                Text("total".tr +
+                    "KH1:  ${controller.listStatisModel[0].sumTask}"),
+                Text(
+                    "total".tr + "HK2: $controller.listStatisModel[1].sumTask"),
+              ],
+            );
+          },
+        ),
       ],
     );
   }

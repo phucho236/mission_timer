@@ -5,11 +5,13 @@ import 'package:mission_timer/core/const/api_path.dart';
 import 'package:mission_timer/core/helper/enum/enum.dart';
 import 'package:mission_timer/core/helper/strorage/strorage.dart';
 import 'package:mission_timer/core/helper/utils/const.dart';
+import 'package:mission_timer/core/model/notification_model.dart';
 import 'package:mission_timer/core/model/statistical_model.dart';
 import 'package:mission_timer/core/model/task_model.dart';
 import 'package:mission_timer/core/model/user_model.dart';
 import 'package:mission_timer/core/model/year_model.dart';
 import 'package:mission_timer/src/clients/dio_clients.dart';
+import 'package:mission_timer/src/screen/notification/notification_controller.dart';
 
 import 'i_user_reponsitory.dart';
 
@@ -102,7 +104,7 @@ class UserRepository extends IUserRepository {
       data.addAll({'content': content});
     }
     if (image != null) {
-      data.addAll({'imageBase64': image});
+      data.addAll({'image': image});
     }
     final result = await handleRepositoryCall(
         DioClient().call(
@@ -152,5 +154,34 @@ class UserRepository extends IUserRepository {
         (result["statistic"]).map((x) => StatisticalModel.fromJson(x)));
     if (listStatis.isNotEmpty) return listStatis;
     return [];
+  }
+
+  @override
+  Future<List<NotificationModel>> getNotifiCation({int? page}) async {
+    final result = await handleRepositoryCall(
+      DioClient().call(
+        DioParams(HttpMethod.GET,
+            endpoint: Path.getNotification,
+            body: {"limit": "10", "page": page ?? 1}),
+      ),
+    );
+    print(result);
+    List<NotificationModel> list = List<NotificationModel>.from(
+        (result["notifications"]).map((x) => NotificationModel.fromJson(x)));
+    if (list.isNotEmpty) return list;
+    return [];
+    //return UserModel.fromJson(result['profile']);
+  }
+
+  @override
+  Future<bool> updateReadedNoti(String id) async {
+    final result = await handleRepositoryCall(
+        DioClient().call(
+          DioParams(HttpMethod.PUT, endpoint: Path.updateReadedNoti(id)),
+        ),
+        noBody: true);
+
+    if (result['code'] == 1) return true;
+    return false;
   }
 }

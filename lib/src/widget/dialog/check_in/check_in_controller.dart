@@ -31,7 +31,7 @@ class CheckInController extends GetxController {
       return;
     }
     String urlImage =
-        await Get.find<FirebaseStorageService>().putPhoto(File(image!.path));
+         await Get.find<FirebaseStorageService>().putPhoto(File(image!.path));
     calendarController.homeController.updateStatusTask(id, () {
       isLoading = false;
       update(['/button_save']);
