@@ -165,12 +165,12 @@ class UserRepository extends IUserRepository {
             body: {"limit": "10", "page": page ?? 1}),
       ),
     );
-    print(result);
+
     List<NotificationModel> list = List<NotificationModel>.from(
         (result["notifications"]).map((x) => NotificationModel.fromJson(x)));
     if (list.isNotEmpty) return list;
     return [];
-    //return UserModel.fromJson(result['profile']);
+
   }
 
   @override

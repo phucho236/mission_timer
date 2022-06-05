@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
-import 'package:get/get_utils/get_utils.dart';
+
 import 'package:mission_timer/core/helper/toast/toast.dart';
 import 'package:mission_timer/core/helper/utils/app_colors.dart';
 import 'package:mission_timer/core/helper/utils/theme_data.dart';
@@ -45,8 +45,10 @@ class _NotificationScreenState extends State<NotificationScreen>
                         controller.notis.length,
                         (index) => Item(
                           onPress: () {
-                            controller.updateReaded(
-                                index, controller.notis[index].id!);
+                            if (!controller.notis[index].readed!) {
+                              controller.updateReaded(
+                                  index, controller.notis[index].id!);
+                            }
                             if (controller.notis[index].type == "admin")
                               Get.toNamed(DetailNotiScreen.route,
                                   arguments: controller.notis[index]);
@@ -122,10 +124,16 @@ class Item extends StatelessWidget {
               controller.notis[index].content!,
               style: textTheme.bodyText2,
             ),
-            leading: Image.asset(
-              "assets/images/logo.png",
-              height: 50,
-            ),
+            leading: controller.notis[index].type == "admin"
+                ? Image.asset(
+                    "assets/images/logo.png",
+                    height: 50,
+                  )
+                : Icon(
+                    Icons.work,
+                    size: 30,
+                    color: ColorsApp.blue,
+                  ),
           ),
         ],
       ),

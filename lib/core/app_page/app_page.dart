@@ -6,6 +6,7 @@ import 'package:mission_timer/src/screen/auth/login/login_screen.dart';
 import 'package:mission_timer/src/screen/auth/pin_code_verification/pin_code_verification.dart';
 import 'package:mission_timer/src/screen/chart/chart_screen.dart';
 import 'package:mission_timer/src/screen/home/home_screen.dart';
+import 'package:mission_timer/src/screen/notification/detail_notifi_screen.dart';
 import 'package:mission_timer/src/screen/notification/notification_screen.dart';
 import 'package:mission_timer/src/screen/splat/splat_screen.dart';
 import 'package:mission_timer/src/screen/test_supervision/test_supervision_screen.dart';
@@ -30,5 +31,7 @@ class AppPages {
         name: UpdateProfileScreen.router, page: () => UpdateProfileScreen()),
     GetPage(
         name: PinCodeVerification.router, page: () => PinCodeVerification()),
+            GetPage(
+        name: DetailNotiScreen.route, page: () => DetailNotiScreen()),
   ];
 }

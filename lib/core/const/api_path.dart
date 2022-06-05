@@ -12,5 +12,5 @@ class Path {
   static const verifyOPT = '/user/password/check-otp';
   static const getYear = '/year';
   static const getStatistical = '/statistical/user';
-  static updateReadedNoti(String id) => 'notification/seen/$id';
+  static updateReadedNoti(String id) => '/notification/seen/$id';
 }

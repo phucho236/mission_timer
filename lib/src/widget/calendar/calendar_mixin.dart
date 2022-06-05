@@ -180,7 +180,7 @@ class TaskWidget extends StatelessWidget {
             ),
             Visibility(
               visible: taskModel.status == "notAnswered" &&
-                  taskModel.task!.startDate!.isBefore(DateTime.now()),
+                  taskModel.task!.startDate!.isAfter(DateTime.now()),
               child: Align(
                 alignment: Alignment.centerRight,
                 child: Transform.scale(

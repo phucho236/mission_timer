@@ -60,5 +60,6 @@ Map<String, String> get en => {
       'status': 'Status',
       'user_id': 'User Id',
       'total': 'Total',
-      'feature_coming_soon': 'Feature coming soon'
+      'feature_coming_soon': 'Feature coming soon',
+      'content': 'Content',
     };

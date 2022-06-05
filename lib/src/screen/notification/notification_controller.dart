@@ -30,7 +30,7 @@ class NotificationController extends GetxController {
     });
   }
 
-  void updateReaded(int index, String id) async {
+  void updateReaded(int index, String id) {
     _ur.updateReadedNoti(id);
     notis[index].readed = true;
     update(["/notification"]);

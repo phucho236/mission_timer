@@ -121,18 +121,22 @@ class BuildPanelList extends StatelessWidget with ThemeDataMixin {
                         ),
                       ],
                     ),
+                    Spacer(),
+                    taskModel.image != null && taskModel.image!.isNotEmpty
+                        ? Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15)),
+                            width: 35,
+                            height: 35,
+                            child: Image.network(
+                              taskModel.image!,
+                              fit: BoxFit.cover,
+                            ),
+                          )
+                        : SizedBox(),
                     SizedBox(
                       width: 15,
                     ),
-                    taskModel.imageBase64 != null &&
-                            taskModel.imageBase64!.isNotEmpty
-                        ? Container(
-                            width: 100,
-                            child: Image.network(
-                              taskModel.imageBase64!,
-                            ),
-                          )
-                        : SizedBox()
                   ],
                 ),
                 isExpanded: taskModel.isExpanded,
@@ -144,5 +148,3 @@ class BuildPanelList extends StatelessWidget with ThemeDataMixin {
     );
   }
 }
-
-

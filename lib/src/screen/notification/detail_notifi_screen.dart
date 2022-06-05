@@ -6,24 +6,28 @@ import 'package:get/get.dart';
 
 class DetailNotiScreen extends StatelessWidget with ThemeDataMixin {
   static const String route = "/DetailNotiScreen";
-  const DetailNotiScreen({required this.notificationModel, Key? key})
-      : super(key: key);
-  final NotificationModel notificationModel;
+  DetailNotiScreen({Key? key}) : super(key: key);
+  final NotificationModel notificationModel = Get.arguments;
   @override
   Widget build(BuildContext context) {
     return BaseLayout(
       titleForm: "detail_notification".tr,
-      child: Column(
-        children: [
-          Text(
-            "title".tr + "${notificationModel.title}",
-            style: textTheme.bodyLarge,
-          ),
-          Text(
-            "content".tr + "${notificationModel.content}",
-            style: textTheme.bodyLarge,
-          ),
-        ],
+      child: Padding(
+        padding: const EdgeInsets.all(15),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "notification".tr + ": ${notificationModel.title}",
+              style: textTheme.titleLarge,
+            ),
+            Text(
+              "content".tr + ": ${notificationModel.content}",
+              style: textTheme.titleMedium,
+            ),
+          ],
+        ),
       ),
     );
   }

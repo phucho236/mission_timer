@@ -1,5 +1,4 @@
 import 'package:flutter_app_badger/flutter_app_badger.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:mission_timer/src/screen/home/home_screen_controller.dart';
 import 'package:mission_timer/src/screen/notification/notification_controller.dart';
 import 'package:mission_timer/src/screen/notification/notification_screen.dart';
@@ -83,13 +82,15 @@ class OnesignalService extends GetxService {
         // Will be called whenever a notification is opened/button pressed.
 
         print('New notification: ${result.notification.additionalData}');
-
+        FlutterAppBadger.removeBadge();
         switch (result.notification.additionalData!['type']) {
           case 'task':
             //defaut
+
             break;
           case 'admin':
             Get.toNamed(NotificationScreen.router);
+
             break;
           default:
             break;
