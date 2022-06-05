@@ -194,11 +194,12 @@ class ContentChart extends StatelessWidget with ThemeDataMixin {
         GetBuilder<ChartController>(
           builder: (controller) {
             return Column(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text("total".tr +
                     "KH1:  ${controller.listStatisModel[0].sumTask}"),
-                Text(
-                    "total".tr + "HK2: $controller.listStatisModel[1].sumTask"),
+                Text("total".tr +
+                    "HK2: ${controller.listStatisModel[1].sumTask}"),
               ],
             );
           },

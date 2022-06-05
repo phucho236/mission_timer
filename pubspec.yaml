@@ -59,7 +59,7 @@ dependencies:
   #image picker
   image_picker: ^0.8.4+11
   #badger notification
-  flutter_app_badger: ^1.4.0
+  flutter_app_badger: ^1.3.0
   #date format
   intl: ^0.17.0
 
