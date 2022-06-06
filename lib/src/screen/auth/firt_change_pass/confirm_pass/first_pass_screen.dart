@@ -33,8 +33,7 @@ class _FirstChangePassScreenState extends State<FirstChangePassScreen>
                     children: [
                       TextFieldCustom(
                         textEditingController: ct.oldpassEditingController,
-                        validate: (value) => ct.validate.validateConfirmPass(
-                            value, ct.oldpassEditingController.text),
+                        validate: (value) => ct.validate.validatePass(value),
                         hint: 'old_pass'.tr,
                       ),
                       TextFieldCustom(

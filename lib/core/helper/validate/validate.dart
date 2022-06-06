@@ -45,7 +45,7 @@ class Validate {
 
   String? validatePass(String? passWord) {
     if (passWord == null || passWord.isEmpty) {
-      return 'pl_input'.tr + ' password'.tr;
+      return 'pl_input'.tr + ' ' + 'password'.tr;
     }
 
     if (passWord.length < 5 || passWord.length > 15) {

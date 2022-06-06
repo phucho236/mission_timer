@@ -27,7 +27,6 @@ class LoginController extends GetxController {
         await Get.find<HomeScreenController>().getTasks();
         if (result.isPasswordChanged!) {
           Get.toNamed(HomeScreen.router);
-       
         } else {
           Get.toNamed(FirstChangePassScreen.router);
         }
