@@ -170,7 +170,6 @@ class UserRepository extends IUserRepository {
         (result["notifications"]).map((x) => NotificationModel.fromJson(x)));
     if (list.isNotEmpty) return list;
     return [];
-
   }
 
   @override

@@ -218,16 +218,17 @@ class TaskWidget extends StatelessWidget {
               ),
             ),
             Visibility(
-              visible: taskModel.task!.endDate!
-                          .subtract(Duration(minutes: 15))
-                          .millisecondsSinceEpoch <
-                      DateTime.now().millisecondsSinceEpoch &&
-                  (taskModel.status == StatusTask.accept.name ||
-                      taskModel.status == StatusTask.done.name) &&
-                  taskModel.task!.endDate!
-                          .add(Duration(hours: 24))
-                          .millisecondsSinceEpoch >
-                      DateTime.now().millisecondsSinceEpoch,
+              visible: taskModel.task?.activity?.type == "STAFF" &&
+                  (taskModel.task!.endDate!
+                              .subtract(Duration(minutes: 15))
+                              .millisecondsSinceEpoch <
+                          DateTime.now().millisecondsSinceEpoch &&
+                      (taskModel.status == StatusTask.accept.name ||
+                          taskModel.status == StatusTask.done.name) &&
+                      taskModel.task!.endDate!
+                              .add(Duration(hours: 24))
+                              .millisecondsSinceEpoch >
+                          DateTime.now().millisecondsSinceEpoch),
               child: Align(
                 alignment: Alignment.centerRight,
                 child: Transform.scale(
