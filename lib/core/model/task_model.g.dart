@@ -22,7 +22,6 @@ TaskModel _$TaskModelFromJson(Map<String, dynamic> json) => TaskModel(
       updatedAt: json['updatedAt'] == null
           ? null
           : DateTime.parse(json['updatedAt'] as String),
-      type: json['type'] as String?,
       isExpanded: json['isExpanded'] as bool? ?? false,
     );
 
@@ -36,7 +35,6 @@ Map<String, dynamic> _$TaskModelToJson(TaskModel instance) => <String, dynamic>{
       'createdBy': instance.createdBy,
       'createdAt': instance.createdAt?.toIso8601String(),
       'updatedAt': instance.updatedAt?.toIso8601String(),
-      'type': instance.type,
       'isExpanded': instance.isExpanded,
     };
 
