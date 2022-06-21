@@ -8,6 +8,7 @@ import 'package:mission_timer/core/helper/utils/theme_data.dart';
 import 'package:mission_timer/src/screen/notification/detail_notifi_screen.dart';
 import 'package:mission_timer/src/screen/notification/notification_controller.dart';
 import 'package:mission_timer/src/widget/base_layout/base_layout.dart';
+import 'package:mission_timer/src/widget/calendar/calendar_controller.dart';
 
 class NotificationScreen extends StatefulWidget {
   static const String router = '/NotificationScreen';
@@ -17,8 +18,7 @@ class NotificationScreen extends StatefulWidget {
   State<NotificationScreen> createState() => _NotificationScreenState();
 }
 
-class _NotificationScreenState extends State<NotificationScreen>
-    with ThemeDataMixin {
+class _NotificationScreenState extends State<NotificationScreen> with ThemeDataMixin {
   @override
   Widget build(BuildContext context) {
     return Builder(builder: (context) {
@@ -35,8 +35,7 @@ class _NotificationScreenState extends State<NotificationScreen>
                   controller.getData(pageInput: 0);
                 },
                 child: ListView(
-                  physics:
-                      AlwaysScrollableScrollPhysics(), // <-- this will disable scroll
+                  physics: AlwaysScrollableScrollPhysics(), // <-- this will disable scroll
 
                   controller: controller.scrollController,
                   children: [
@@ -46,14 +45,13 @@ class _NotificationScreenState extends State<NotificationScreen>
                         (index) => Item(
                           onPress: () {
                             if (!controller.notis[index].readed!) {
-                              controller.updateReaded(
-                                  index, controller.notis[index].id!);
+                              controller.updateReaded(index, controller.notis[index].id!);
                             }
                             if (controller.notis[index].type == "admin")
-                              Get.toNamed(DetailNotiScreen.route,
-                                  arguments: controller.notis[index]);
-                            else
-                              Toast().showToat("feature_coming_soon".tr);
+                              Get.toNamed(DetailNotiScreen.route, arguments: controller.notis[index]);
+                            else {
+                              Get.back();
+                            }
                           },
                           textTheme: textTheme,
                           controller: controller,
@@ -66,8 +64,7 @@ class _NotificationScreenState extends State<NotificationScreen>
                         builder: (controller) {
                           return Opacity(
                               opacity: controller.isLoadMore ? 1 : 0,
-                              child:
-                                  Center(child: CircularProgressIndicator()));
+                              child: Center(child: CircularProgressIndicator()));
                         })
                   ],
                 ),
@@ -79,12 +76,7 @@ class _NotificationScreenState extends State<NotificationScreen>
 }
 
 class Item extends StatelessWidget {
-  const Item(
-      {Key? key,
-      required this.textTheme,
-      required this.controller,
-      @required this.onPress,
-      required this.index})
+  const Item({Key? key, required this.textTheme, required this.controller, @required this.onPress, required this.index})
       : super(key: key);
 
   final TextTheme textTheme;

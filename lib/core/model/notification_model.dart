@@ -16,6 +16,7 @@ class NotificationModel {
   final String? content;
   final String? type;
   final String? creater;
+  
   @JsonKey(name: "seen")
    bool? readed;
   factory NotificationModel.fromJson(Map<String, dynamic> json) =>

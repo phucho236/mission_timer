@@ -34,8 +34,7 @@ class OnesignalService extends GetxService {
       (OSNotificationReceivedEvent event) {
         print('New notification: ${event.notification.additionalData}');
         print(event.notification.badge);
-        FlutterAppBadger.updateBadgeCount(
-            event.notification.badgeIncrement ?? 1);
+        FlutterAppBadger.updateBadgeCount(event.notification.badgeIncrement ?? 1);
         print("type" + event.notification.additionalData!['type']);
         switch (event.notification.additionalData!['type']) {
           case 'task':
@@ -47,16 +46,13 @@ class OnesignalService extends GetxService {
               homeScreenController.getTasks(updateLayout: () {
                 //update event for day day selected
                 if (calendarController.selectedDay != null) {
-                  calendarController.selectedTasks = calendarController
-                      .getEventsForDay(calendarController.selectedDay!);
+                  calendarController.selectedTasks =
+                      calendarController.getEventsForDay(calendarController.selectedDay!);
                 }
                 //update event for range day selected
-                if (calendarController.rangeStart != null &&
-                    calendarController.rangeEnd != null) {
-                  calendarController.selectedTasks =
-                      calendarController.getEventsForRange(
-                          calendarController.rangeStart!,
-                          calendarController.rangeEnd!);
+                if (calendarController.rangeStart != null && calendarController.rangeEnd != null) {
+                  calendarController.selectedTasks = calendarController.getEventsForRange(
+                      calendarController.rangeStart!, calendarController.rangeEnd!);
                 }
                 calendarController.update(['/events', '/calendar']);
               });
@@ -102,6 +98,6 @@ class OnesignalService extends GetxService {
 //Todo need handle logout onesignal
   void logOutOneSignal() async {
     FlutterAppBadger.removeBadge();
-    await OneSignal.shared.disablePush(false);
+    await OneSignal.shared.disablePush(true);
   }
 }
