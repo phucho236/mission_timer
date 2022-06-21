@@ -102,6 +102,6 @@ class OnesignalService extends GetxService {
 //Todo need handle logout onesignal
   void logOutOneSignal() async {
     FlutterAppBadger.removeBadge();
-    await OneSignal.shared.disablePush(false);
+    await OneSignal.shared.disablePush(true);
   }
 }
